@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -6,13 +8,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to GetRecruited.com </h1>
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to MY React</h1>
         </header>
         <p className="App-intro">
-          What to be a college athlete? Get started today. Make your dream come true.
-        </p>
-        <p className="App-footer">
-          <p>Footer</p>
+          To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
     );
