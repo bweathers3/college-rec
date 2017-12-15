@@ -9,7 +9,13 @@ class App extends Component {
           <h1 className="App-title">Welcome to GetRecruited.com </h1>
         </header>
         <p className="App-intro">
-          What to be a college athlete? Get started today. Make your dream come true.
+          What to be a college athlete?
+        </p>
+        <p className="App-intro">
+          Get started today.
+        </p>
+        <p className="App-intro">
+          Make your dream come true.
         </p>
         <p className="App-footer">
           <p>Footer</p>
