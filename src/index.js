@@ -6,7 +6,7 @@ import App from './components/app/App';
 //import Home from './pages/Home';
 import registerServiceWorker from './registerServiceWorker';
 
-import { Router, Route } from 'react-router';
+import { Router, Route, IndexRoute } from 'react-router';
 
 
 const router = (

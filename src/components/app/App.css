@@ -1,29 +1,29 @@
-.App {
+.navbar-row {
+  height: 7%;
+}
+
+.Home {
   text-align: center;
 }
 
-.App-logo {
-  /*animation: App-logo-spin infinite 20s linear;*/
-  height: 80px;
-}
-
-.App-header {
-  background-color: white; /*#42c5f4; mediumspringgreen;/*chartreuse; /*#222;*/
+.Home-header {
+  background-color:  whitesmoke; /*white; /*#42c5f4; mediumspringgreen;/*chartreuse; /*#222;*/
   height: 120px;
   padding: 20px;
   color:  #42c5f4;
 }
 
-.App-title {
+.Home-title {
   font-size: 3.0em;
+  font-family: 'Merriweather', serif;
 }
 
-.App-intro {
-  font-size: large;
+.Home-intro {
+  font-size: 1.5em;
+  padding: 20px;
+  color: blue;
+  font-family: 'Raleway', sans-serif;
 }
-
-
-/* my code */
 
 body {
   background-color: #42c5f4; /*white;*/
@@ -32,21 +32,15 @@ body {
   font-family: 'Georgia', serif;
 }
 
-.footer {
-    height: 50px;
-    margin-top: -50px;
-    background-color: orange;
-    color: black;
-    text-align: center;
-}
-
-.App-footer {
+.Footer {
   background-color: orange;
-  height: 80px;
+  height: 100px;
   margin-top: 400px;
   padding: 20px;
   color: black;
+  text-align: center;
 }
+
 .no-float {
   float: none;
 }
@@ -55,10 +49,18 @@ body {
   height: 100%;
 }
 
-.navbar-row {
-  height: 7%;
-}
-
 button:hover {
   cursor: pointer;
+}
+
+.container-sales-point {
+  padding: 50px;
+}
+
+.button-size {
+  height: 75%;
+  background-color: orange;
+  color: blue;
+  font-size: 22px;
+  padding: 1%;
 }
