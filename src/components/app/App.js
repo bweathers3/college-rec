@@ -1,11 +1,27 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
+//import React, { Component } from 'react';
+//import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as action from '../../actions/action';
+import Main from '../../pages/Main';
+//import { Grid, Row, Col } from 'react-bootstrap';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
+function mapStateToProps(state) {
+  return {
+    salesPointsHome: state.salesPointsHome,
+    tabControl: state.tabControl
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(action, dispatch);
+}
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
+
+
+      /*
       <div className="Home">
         <Row className="Home-header">
           <Col xs={6} md={2}>Get Recruited</Col>
@@ -50,9 +66,7 @@ class App extends Component {
           <Col xs={6} md={2}>CopyRight 2018</Col>
         </Row>
       </div>
+      */
 
-    );
-  }
-}
 
 export default App;
