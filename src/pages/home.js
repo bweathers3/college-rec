@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
+//import { Link } from 'react-router';
+//import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import { login, logout, isLoggedIn } from '../utils/Authservice';
 //import './Home.css';
 
 class Home extends Component {
@@ -23,7 +25,10 @@ class Home extends Component {
             <p><strong>Make your dream come true.</strong></p>
           </Col>
           <Col xs={12} md={12}>
-           <button className='button-size' >Get Started Now</button>
+            {
+            (isLoggedIn()) ? ( <button className='button-size' onClick={() => logout()}>Get Started Now</button> ) : ( <button className='button-size' onClick={() => login()}>Get Started Now</button> )
+            }
+
           </Col>
         </Row>
 
