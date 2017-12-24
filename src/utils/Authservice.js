@@ -1,9 +1,9 @@
 import decode from 'jwt-decode';
 import { browserHistory } from 'react-router';
 import auth0 from 'auth0-js';
+
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
-
 const CLIENT_ID = 'WvJ6rYTxRexqciAB_bJr6d2PHFMmLmNx';
 const CLIENT_DOMAIN = 'get-recruited.auth0.com';
 const REDIRECT = 'http://localhost:3000/callback';
@@ -57,6 +57,7 @@ function getParameterByName(name) {
   let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
+
 
 // Get and store access_token in local storage
 export function setAccessToken() {
