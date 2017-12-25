@@ -9,6 +9,7 @@ import './App.css';
 
 function mapStateToProps(state) {
   return {
+    authReducer: state.authReducer,
     salesPointsHome: state.salesPointsHome,
     tabControl: state.tabControl
   }
