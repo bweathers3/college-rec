@@ -1,7 +1,5 @@
-
 import { salesPoint1, salesPoint2, salesPoint3 } from '../appData/salesPoints';
 
-// create a homePage object
 const homePageState = {
   pointOne: salesPoint1,
   pointTwo: salesPoint2,

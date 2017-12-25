@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
-//import './Home.css';
+//import { Link } from 'react-router';
+//import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import { isLoggedIn } from '../actions/action';
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.handleLogoutClick = this.handleLogoutClick.bind(this)
+  }
+
+  handleLoginClick() {
+    this.props.login()
+  }
+
+  handleLogoutClick() {
+    this.props.logout()
+  }
+
   render() {
     return (
 
@@ -23,7 +38,10 @@ class Home extends Component {
             <p><strong>Make your dream come true.</strong></p>
           </Col>
           <Col xs={12} md={12}>
-           <button className='button-size' >Get Started Now</button>
+            {
+            (isLoggedIn()) ? ( <button className='button-size' onClick={ this.handleLogoutClick }>Get Started Now</button> ) : ( <button className='button-size' onClick={ this.handleLoginClick }>Get Started Now</button> )
+            }
+
           </Col>
         </Row>
 
