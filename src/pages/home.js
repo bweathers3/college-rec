@@ -2,10 +2,23 @@ import React, { Component } from 'react';
 //import { Link } from 'react-router';
 //import { Grid, Row, Col } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
-import { login, logout, isLoggedIn } from '../utils/Authservice';
-//import './Home.css';
+import { isLoggedIn } from '../actions/action';
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.handleLogoutClick = this.handleLogoutClick.bind(this)
+  }
+
+  handleLoginClick() {
+    this.props.login()
+  }
+
+  handleLogoutClick() {
+    this.props.logout()
+  }
+
   render() {
     return (
 
@@ -26,7 +39,7 @@ class Home extends Component {
           </Col>
           <Col xs={12} md={12}>
             {
-            (isLoggedIn()) ? ( <button className='button-size' onClick={() => logout()}>Get Started Now</button> ) : ( <button className='button-size' onClick={() => login()}>Get Started Now</button> )
+            (isLoggedIn()) ? ( <button className='button-size' onClick={ this.handleLogoutClick }>Get Started Now</button> ) : ( <button className='button-size' onClick={ this.handleLoginClick }>Get Started Now</button> )
             }
 
           </Col>

@@ -7,37 +7,18 @@ export function homeBaseState() {
   }
 }
 
-//#######################
+//####################### auth0 login/logout
 const ID_TOKEN_KEY = 'id_token';
-//const ACCESS_TOKEN_KEY = 'access_token';
+const ACCESS_TOKEN_KEY = 'access_token';
 const CLIENT_ID = 'WvJ6rYTxRexqciAB_bJr6d2PHFMmLmNx';
 const CLIENT_DOMAIN = 'get-recruited.auth0.com';
 const REDIRECT = 'http://localhost:3000/callback';
 const SCOPE = 'openid';
 const AUDIENCE = 'https://get-recruited.auth0.com/userinfo';
-//#######################
-
-//**** begin auth0
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
-
-/*
-function loginSuccess(profile) {
-  return {
-    type: LOGIN_SUCCESS,
-    profile
-  }
-}
-
-function loginError(err) {
-  return {
-    type: LOGIN_ERROR,
-    err
-  }
-}
-*/
 
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
@@ -90,4 +71,28 @@ function isTokenExpired(token) {
   const expirationDate = getTokenExpirationDate(token);
   return expirationDate < new Date();
 }
-//**** end auth0
+
+export function requireAuth(nextState, replace) {
+  if (!isLoggedIn()) {
+    replace({pathname: '/'});
+  }
+}
+
+export function getAccessToken() {
+  return localStorage.getItem(ACCESS_TOKEN_KEY);
+}
+
+function getParameterByName(name) {
+  let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+export function setAccessToken() {
+  let accessToken = getParameterByName('access_token');
+  localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+}
+
+export function setIdToken() {
+  let idToken = getParameterByName('id_token');
+  localStorage.setItem(ID_TOKEN_KEY, idToken);
+}

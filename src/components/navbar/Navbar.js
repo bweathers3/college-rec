@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Col } from 'react-bootstrap';
-//import { login, logout, isLoggedIn } from '../../utils/Authservice';
 import { isLoggedIn } from '../../actions/action';
 import './navbar.css';
 
@@ -23,7 +22,6 @@ class Navbar extends Component {
   }
 
   render() {
-    //const { error, isAuthenticated } = this.props
     return (
       <Col sm={ 12 } className="nav-bar">
         <h5 id="nav-title">

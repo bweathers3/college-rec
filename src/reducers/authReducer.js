@@ -1,6 +1,4 @@
-//import { routerReducer as routing } from 'react-router-redux';
 import * as ActionTypes from '../actions/action';
-
 
 function authReducer(state = { error: '' }, action) {
   switch (action.type) {
