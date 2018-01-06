@@ -24,20 +24,23 @@ class Navbar extends Component {
   render() {
     return (
       <Row>
-      <Col md={ 12 } md={ 9 } className="nav-bar">
-        <h5 id="nav-title">
-          <Link className="link" to="/">Get Recruited</Link>
-        </h5>
-      </Col>
-         <Col xs={ 6 } md={ 3 } >
+        <Col md={ 12 } md={ 6 } className="nav-bar">
+          <h5 id="nav-title">
+            <Link className="link" to="/">Get Recruited</Link>
+          </h5>
+        </Col>
+        <Col xs={ 12 } md={ 3 } >
           {
-            (isLoggedIn()) ? ( <Link to='/studentAthletes/new'><button className="btn btn-success log">Athletes</button></Link> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Athletes</button> )
+            (isLoggedIn()) ? ( <Link to='/studentAthletes'><button className="btn btn-success log">Athletes</button></Link> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Athletes</button> )
+          }
+          {
+            (isLoggedIn()) ? ( <Link to='/addAthlete/new'><button className="btn btn-success log">New Athlete</button></Link> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Athletes</button> )
           }
           {
             (isLoggedIn()) ? ( <button className="btn btn-warning log" onClick={ this.handleLogoutClick }>Log out</button> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Log In</button> )
           }
-          </Col>
-          </Row>
+        </Col>
+      </Row>
     )
   }
 }

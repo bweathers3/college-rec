@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Form, Col, Grid, Row, Button, Radio } from "react-bootstrap";
-import { Field, reduxForm } from 'redux-form';
 import { isLoggedIn, createStudentAthlete } from '../../actions/action';
 import './addAthlete.css';
 
 
-const NewStudentAthlete = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+class NewStudentAthlete extends Component{
+
+  render() {
+
+  const { fields:{ firstName, middleName, lastName, birthdate }, handleSubmit, pristine, reset, submitting } = this.props;
   return (
     <div className="Home-intro">
       <Form horizontal onSubmit={handleSubmit}>
@@ -99,8 +103,8 @@ const NewStudentAthlete = props => {
       </Form>
     </div>
   );
+}
 };
-
 
 
 export default reduxForm({

@@ -1,6 +1,7 @@
 import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
-import  axios from 'axios';
+import axios from 'axios';
+
 
 export function homeBaseState() {
   return {
@@ -8,6 +9,7 @@ export function homeBaseState() {
   }
 }
 
+const athletesArray = [];
 //####################### auth0 login/logout
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
@@ -99,11 +101,10 @@ export function setIdToken() {
 }
 
 // new studentAthlete record
-
-export const ADD_NEW_ATHLETE = "ADD_NEW_ATHLETE";
-export const ADD_SPORT_FOR_ATHLETE = "ADD_SPORT_FOR_ATHLETE";
-
 export const GET_STUDENT_ATHLETES = "GET_STUDENT_ATHLETES";
+export const START_STUDENT_ATHLETES_SEARCH = "START_STUDENT_ATHLETES_SEARCH";
+export const RECEIVED_STUDENT_ATHLETES = "RECEIVED_STUDENT_ATHLETES";
+
 export const GET_STUDENT_ATHLETE = "GET_STUDENT_ATHLETE";
 export const CREATE_STUDENT_ATHLETE = "CREATE_STUDENT_ATHLETE";
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
@@ -111,39 +112,39 @@ export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 const API_URL = "http://localhost:5000/api/v1" ;
 
 
-export const addNewAthlete = (idToken, firstName, middleName, lastName, gender, beginUniversity, fullName) => {
- return {
- type: ADD_NEW_ATHLETE,
- idToken: idToken,
- firstName: firstName,
- middleName: middleName,
- lastName: lastName,
- gender:  gender,
- beginUniversity: beginUniversity,
- fullName: fullName
- }
-}
-
-export const addSportForAthlete = (idToken, fullName, sport) => {
- return {
- type: ADD_SPORT_FOR_ATHLETE,
- idToken: idToken,
- fullName: fullName,
- sport: sport
- }
-}
-
 export function getStudentAthletes(){
-  const request = axios.get('${API_URL}/studentAthletes');
+  let url = API_URL + '/student_athletes'
+  return (dispatch) => {
+    dispatch(startStudentAthletesSearch())
+      return axios.get( url ).then(
+        (response) => {
+          let athletesArray = response.data;
+            dispatch(receivedStudentAthletes(athletesArray))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startStudentAthletesSearch(){
+    return {
+        type : 'START_STUDENT_ATHLETES_SEARCH'
+    }
+}
+
+export function receivedStudentAthletes(athletes){
+console.log('recieved student athlete')
+console.log(athletes);
   return{
-    type: GET_STUDENT_ATHLETES,
-    payload: request
-  };
+       type: "RECEIVED_STUDENT_ATHLETES",
+       studentAthletesArray: athletes
+   }
 }
 
 export function getStudentAthlete(id){
-  const request = axios.get('${API_URL}/studentAthlete/${id}');
-
+  const request = axios.get('${API_URL}/student_athletes/${id}');
   return{
     type: GET_STUDENT_ATHLETE,
     payload: request
@@ -151,7 +152,7 @@ export function getStudentAthlete(id){
 }
 
 export function createStudentAthlete(props){
-  const request = axios.post('${API_URL}/studentAthletes', props);
+  const request = axios.post('http://localhost:5000/api/v1/student_athletes', props);
   return{
     type: CREATE_STUDENT_ATHLETE,
     payload: request
@@ -159,8 +160,7 @@ export function createStudentAthlete(props){
 }
 
 export function deleteStudentAthlete(id){
-  const request = axios.delete('${API_URL}/studentAthletes/${id}');
-
+  const request = axios.delete('${API_URL}/student_athletes/${id}');
   return{
     type: DELETE_STUDENT_ATHLETE,
     payload: request

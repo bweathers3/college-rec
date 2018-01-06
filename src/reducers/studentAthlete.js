@@ -1,31 +1,55 @@
-import { addNewAthlete, addSportForAthlete } from '../actions/action';
+import { START_STUDENT_ATHLETES_SEARCH, RECEIVED_STUDENT_ATHLETES, GET_STUDENT_ATHLETE } from '../actions/action';
 
-function studentAthlete(state = [], action) {
-  switch (action.type) {
-    case 'ADD_NEW_ATHLETE':
-      return   {
+const intitalStateApi = {
+  studentAthletesArray: [],
+  all: [],
+  studentAthlete: null,
+  gettingStudentAthletes: false
+};
+
+function studentAthlete(state = intitalStateApi, action) {
+  switch(action.type) {
+
+    case 'GET_STUDENT_ATHLETES' :
+      return {
         ...state,
-        idToken: action.idToken,
-        firstName: action.firstName,
-        middleName: action.middleName,
-        lastName: action.lastName,
-        gender:  action.gender,
-        beginUniversity: action.beginUniversity,
-        fullName: action.fullname
+        studentAthletesArray: action.payload.data
+      }
+
+
+    case 'START_STUDENT_ATHLETES_SEARCH' :
+      return {
+        ...state,
+        gettingStudentAthletes: true
+    }
+
+    case 'RECEIVED_STUDENT_ATHLETES' :
+    console.log('in reducer for recieved')
+    console.log(action.studentAthletesArray)
+      return {
+        ...state,
+        studentAthletesArray: action.studentAthletesArray,
+        gettingStudentAthletes: false
+      }
+
+
+
+    case 'GET_STUDENT_ATHLETE' :
+      return {
+        ...state,
+        studentAthlete: action.payload.data
+      }
+
+    case 'RECEIVED_STUDENT_ATHLETES' :
+        return {
+          ...state,
+          studentAthlete: action.studentAthletes
         }
 
-    case 'ADD_SPORT_FOR_ATHLETE':
-      return   {
-        ...state,
-        idToken: action.idToken,
-        fullName: action.fullname,
-        sport: action.sport
-        }
 
     default:
-      return state
-
-  }
+     return state;
+ }
 }
 
 export default studentAthlete;

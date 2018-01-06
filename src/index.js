@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import promise from 'redux-promise';
-import { createLogger } from 'redux-logger';
 //import { BrowserRouter } from 'react-router-dom';
 //import './index.css';
 import App from './components/app/App';
@@ -25,9 +23,10 @@ const router = (
       <Route path="/" component={ App }>
         <IndexRoute component={ Home }></IndexRoute>
         <Route path="/callback" component={ Callback } />
-        <Route path="/studentAthletes/new" component={ StudentAthletes } />
+        <Route path="/studentAthletes" component={ StudentAthletes } />
+        <Route path="/addAthlete/new" component={ AddAthlete } />
       </Route>
-      
+
     </Router>
 
   </Provider>

@@ -7,19 +7,41 @@ import { getStudentAthletes } from '../../actions/action';
 //import './?.css';
 
 class StudentAthletes extends React.Component {
+  componentWillMount(){
+    this.props.getStudentAthletes();
+    console.log('test load getStudentAthlete')
+    console.log(this.props.getStudentAthletes())
+
+  }
+
+  renderStudentAthletes(){
+    return this.props.studentAthletesArray.map((studentathlete) => {
+      return (
+        <li key={studentathlete.id}>
+          <Link to={"studentAthlete/" + studentathlete.id }>
+            <h4> {studentathlete.firstName} </h4>
+          </Link>
+        </li>
+      )
+    });
+  }
+
   render() {
     return (
-      <div className="container">
-        athletes page
-      </div>
+      <Row>
+
+        athletes Home Page
+        <ul className="list-group">
+          {this.renderStudentAthletes()}
+        </ul>
+      </Row>
 
     )
   }
 }
 
-/*
 function mapStateToProps(state){
-  return { studentAthletes: state.studentAthletes.all }
+  return { studentAthletesArray: state.studentAthlete.studentAthletesArray }
 }
-*/
-export default connect(null, { getStudentAthletes: getStudentAthletes })(StudentAthletes);
+
+export default connect(mapStateToProps, { getStudentAthletes: getStudentAthletes })(StudentAthletes);
