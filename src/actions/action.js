@@ -9,7 +9,6 @@ export function homeBaseState() {
   }
 }
 
-const athletesArray = [];
 //####################### auth0 login/logout
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
@@ -132,17 +131,15 @@ export function getStudentAthletes(){
 }
 
 export function startStudentAthletesSearch(){
-    return {
-        type : 'START_STUDENT_ATHLETES_SEARCH'
-    }
+  return {
+    type : 'START_STUDENT_ATHLETES_SEARCH'
+  }
 }
 
 export function receivedStudentAthletes(athletes){
-console.log('recieved student athlete')
-console.log(athletes);
   return{
-       type: "RECEIVED_STUDENT_ATHLETES",
-       studentAthletesArray: athletes
+    type: "RECEIVED_STUDENT_ATHLETES",
+    studentAthletesArray: athletes
    }
 }
 
@@ -163,19 +160,23 @@ export function getSingleAthlete(id){
 }
 
 export function startSingleAthleteSearch(){
-    return {
-        type : 'START_SINGLE_ATHLETE_SEARCH'
-    }
+  return {
+    type : 'START_SINGLE_ATHLETE_SEARCH'
+  }
 }
 
 export function receivedSingleAthlete(athlete){
-console.log('recieved single athlete')
-console.log(athlete);
   return{
-       type: "RECEIVED_SINGLE_ATHLETE",
-       singleAthlete: athlete
-   }
+    type: "RECEIVED_SINGLE_ATHLETE",
+    singleAthlete: athlete
+  }
 }
+
+
+
+
+
+
 
 export function createStudentAthlete(props){
   const request = axios.post('http://localhost:5000/api/v1/student_athletes', props);
@@ -185,7 +186,7 @@ export function createStudentAthlete(props){
   };
 }
 
-
+/*
 export function deleteStudentAthlete(id){
   const request = axios.delete('${API_URL}/student_athletes/${id}');
   return{
@@ -193,3 +194,4 @@ export function deleteStudentAthlete(id){
     payload: request
   };
 }
+*/

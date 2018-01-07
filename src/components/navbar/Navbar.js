@@ -22,12 +22,12 @@ class Navbar extends Component {
   render() {
     return (
       <Row>
-        <Col md={ 12 } md={ 9 } className="nav-bar">
+        <Col xs={ 12 } md={ 9 } className="nav-bar">
           <h5 id="nav-title">
             <Link className="link" to="/">Get Recruited</Link>
           </h5>
         </Col>
-        <Col md={ 6 } md={ 3 } >
+        <Col xs={ 6 } md={ 3 } >
           {
             (isLoggedIn()) ? ( <Link to='/studentAthletes'><button className="btn btn-success log">Athletes</button></Link> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Athletes</button> )
           }

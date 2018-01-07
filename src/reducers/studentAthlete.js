@@ -14,13 +14,6 @@ const intitalStateApi = {
 
 function studentAthlete(state = intitalStateApi, action) {
   switch(action.type) {
-/*
-    case 'GET_STUDENT_ATHLETES' :
-      return {
-        ...state,
-        studentAthletesArray: action.payload.data
-      }
-*/
 
     case 'START_STUDENT_ATHLETES_SEARCH' :
       return {
@@ -29,15 +22,12 @@ function studentAthlete(state = intitalStateApi, action) {
     }
 
     case 'RECEIVED_STUDENT_ATHLETES' :
-    console.log('in reducer for recieved')
-    console.log(action.studentAthletesArray)
       return {
         ...state,
         studentAthletesArray: action.studentAthletesArray,
         gettingStudentAthletes: false
       }
 
-//*************************************************
       case 'START_SINGLE_ATHLETE_SEARCH' :
         return {
           ...state,
@@ -52,7 +42,6 @@ function studentAthlete(state = intitalStateApi, action) {
           singleAthlete: action.singleAthlete,
           gettingSingleAthlete: false
         }
-
 
     default:
      return state;
