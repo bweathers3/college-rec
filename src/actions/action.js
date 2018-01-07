@@ -1,5 +1,7 @@
 import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
+import axios from 'axios';
+
 
 export function homeBaseState() {
   return {
@@ -96,3 +98,100 @@ export function setIdToken() {
   let idToken = getParameterByName('id_token');
   localStorage.setItem(ID_TOKEN_KEY, idToken);
 }
+
+// new studentAthlete record
+export const GET_STUDENT_ATHLETES = "GET_STUDENT_ATHLETES";
+export const START_STUDENT_ATHLETES_SEARCH = "START_STUDENT_ATHLETES_SEARCH";
+export const RECEIVED_STUDENT_ATHLETES = "RECEIVED_STUDENT_ATHLETES";
+
+export const GET_SINGLE_ATHLETE = "GET_SINGLE_ATHLETE";
+export const START_SINGLE_ATHLETE_SEARCH = "START_SINGLE_ATHLETE_SEARCH";
+export const RECEIVED_SINGLE_ATHLETE = "RECEIVED_SINGLE_ATHLETE";
+
+export const CREATE_STUDENT_ATHLETE = "CREATE_STUDENT_ATHLETE";
+export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
+
+const API_URL = "http://localhost:5000/api/v1" ;
+
+
+export function getStudentAthletes(){
+  let url = API_URL + '/student_athletes'
+  return (dispatch) => {
+    dispatch(startStudentAthletesSearch())
+      return axios.get( url ).then(
+        (response) => {
+          let athletesArray = response.data;
+            dispatch(receivedStudentAthletes(athletesArray))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startStudentAthletesSearch(){
+  return {
+    type : 'START_STUDENT_ATHLETES_SEARCH'
+  }
+}
+
+export function receivedStudentAthletes(athletes){
+  return{
+    type: "RECEIVED_STUDENT_ATHLETES",
+    studentAthletesArray: athletes
+   }
+}
+
+export function getSingleAthlete(id){
+  let url = API_URL + '/student_athletes/' + id
+  return (dispatch) => {
+    dispatch(startSingleAthleteSearch())
+      return axios.get( url ).then(
+        (response) => {
+          let athlete = response.data;
+            dispatch(receivedSingleAthlete(athlete))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startSingleAthleteSearch(){
+  return {
+    type : 'START_SINGLE_ATHLETE_SEARCH'
+  }
+}
+
+export function receivedSingleAthlete(athlete){
+  return{
+    type: "RECEIVED_SINGLE_ATHLETE",
+    singleAthlete: athlete
+  }
+}
+
+
+
+
+
+
+
+export function createStudentAthlete(props){
+  const request = axios.post('http://localhost:5000/api/v1/student_athletes', props);
+  return{
+    type: CREATE_STUDENT_ATHLETE,
+    payload: request
+  };
+}
+
+/*
+export function deleteStudentAthlete(id){
+  const request = axios.delete('${API_URL}/student_athletes/${id}');
+  return{
+    type: DELETE_STUDENT_ATHLETE,
+    payload: request
+  };
+}
+*/

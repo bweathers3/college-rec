@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { isLoggedIn } from '../../actions/action';
 import './navbar.css';
-
-//var classNames = require('classnames');
 
 class Navbar extends Component {
   constructor(props) {
@@ -23,16 +21,21 @@ class Navbar extends Component {
 
   render() {
     return (
-      <Col sm={ 12 } className="nav-bar">
-        <h5 id="nav-title">
-          <Link className="link" to="/">Get Recruited</Link>
-        </h5>
-        <div className="tabs">
+      <Row>
+        <Col xs={ 12 } md={ 9 } className="nav-bar">
+          <h5 id="nav-title">
+            <Link className="link" to="/">Get Recruited</Link>
+          </h5>
+        </Col>
+        <Col xs={ 6 } md={ 3 } >
           {
-            (isLoggedIn()) ? ( <button className="btn btn-warning log" onClick={ this.handleLogoutClick }>Log out </button> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Log In</button> )
+            (isLoggedIn()) ? ( <Link to='/studentAthletes'><button className="btn btn-success log">Athletes</button></Link> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Athletes</button> )
           }
-        </div>
-      </Col>
+          {
+            (isLoggedIn()) ? ( <button className="btn btn-warning log" onClick={ this.handleLogoutClick }>Log out</button> ) : ( <button className="btn btn-primary log" onClick={ this.handleLoginClick }>Log In</button> )
+          }
+        </Col>
+      </Row>
     )
   }
 }
