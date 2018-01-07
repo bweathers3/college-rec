@@ -105,7 +105,10 @@ export const GET_STUDENT_ATHLETES = "GET_STUDENT_ATHLETES";
 export const START_STUDENT_ATHLETES_SEARCH = "START_STUDENT_ATHLETES_SEARCH";
 export const RECEIVED_STUDENT_ATHLETES = "RECEIVED_STUDENT_ATHLETES";
 
-export const GET_STUDENT_ATHLETE = "GET_STUDENT_ATHLETE";
+export const GET_SINGLE_ATHLETE = "GET_SINGLE_ATHLETE";
+export const START_SINGLE_ATHLETE_SEARCH = "START_SINGLE_ATHLETE_SEARCH";
+export const RECEIVED_SINGLE_ATHLETE = "RECEIVED_SINGLE_ATHLETE";
+
 export const CREATE_STUDENT_ATHLETE = "CREATE_STUDENT_ATHLETE";
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
@@ -143,12 +146,35 @@ console.log(athletes);
    }
 }
 
-export function getStudentAthlete(id){
-  const request = axios.get('${API_URL}/student_athletes/${id}');
+export function getSingleAthlete(id){
+  let url = API_URL + '/student_athletes/' + id
+  return (dispatch) => {
+    dispatch(startSingleAthleteSearch())
+      return axios.get( url ).then(
+        (response) => {
+          let athlete = response.data;
+            dispatch(receivedSingleAthlete(athlete))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startSingleAthleteSearch(){
+    return {
+        type : 'START_SINGLE_ATHLETE_SEARCH'
+    }
+}
+
+export function receivedSingleAthlete(athlete){
+console.log('recieved single athlete')
+console.log(athlete);
   return{
-    type: GET_STUDENT_ATHLETE,
-    payload: request
-  };
+       type: "RECEIVED_SINGLE_ATHLETE",
+       singleAthlete: athlete
+   }
 }
 
 export function createStudentAthlete(props){
@@ -158,6 +184,7 @@ export function createStudentAthlete(props){
     payload: request
   };
 }
+
 
 export function deleteStudentAthlete(id){
   const request = axios.delete('${API_URL}/student_athletes/${id}');

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { getStudentAthletes } from '../../actions/action';
 
 //import './?.css';
@@ -15,11 +15,11 @@ class StudentAthletes extends React.Component {
   }
 
   renderStudentAthletes(){
-    return this.props.studentAthletesArray.map((studentathlete) => {
+    return this.props.studentAthletesArray.map(( studentathlete ) => {
       return (
-        <li key={studentathlete.id}>
-          <Link to={"studentAthlete/" + studentathlete.id }>
-            <h4> {studentathlete.firstName} </h4>
+        <li key={ studentathlete.id }>
+          <Link to={ "singleAthlete/" + studentathlete.id }>
+            <h4> { studentathlete.firstName + " " + studentathlete.middleName + " " + studentathlete.lastName } </h4>
           </Link>
         </li>
       )
@@ -28,14 +28,25 @@ class StudentAthletes extends React.Component {
 
   render() {
     return (
-      <Row>
-
-        athletes Home Page
-        <ul className="list-group">
-          {this.renderStudentAthletes()}
-        </ul>
-      </Row>
-
+      <div>
+        <Grid>
+          <Row>
+            <Col md={ 4 }>
+              Your Athlete(s)
+            </Col>
+          </Row>
+          <Row>
+            <Col md={ 4 }>
+              <ol className="list-group">
+                { this.renderStudentAthletes() }
+              </ol>
+            </Col>
+          </Row>
+          <Row>
+            <Link to='/addAthlete/new'><button className="btn btn-success log">New Athlete</button></Link>
+          </Row>
+        </Grid>
+      </div>
     )
   }
 }

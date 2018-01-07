@@ -13,6 +13,7 @@ import registerServiceWorker from './registerServiceWorker';
 import store, { history } from './store';
 import Callback from './components/Callback';
 import StudentAthletes from './components/studentathlete/StudentAthletes';
+import SingleAthlete from './components/studentathlete/SingleAthlete';
 import AddAthlete from './components/addstudentathlete/AddAthlete';
 
 const router = (
@@ -25,6 +26,7 @@ const router = (
         <Route path="/callback" component={ Callback } />
         <Route path="/studentAthletes" component={ StudentAthletes } />
         <Route path="/addAthlete/new" component={ AddAthlete } />
+        <Route path="/singleAthlete/:id" component={ SingleAthlete } />
       </Route>
 
     </Router>

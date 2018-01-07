@@ -1,21 +1,26 @@
-import { START_STUDENT_ATHLETES_SEARCH, RECEIVED_STUDENT_ATHLETES, GET_STUDENT_ATHLETE } from '../actions/action';
+import { START_STUDENT_ATHLETES_SEARCH,
+  RECEIVED_STUDENT_ATHLETES,
+  START_SINGLE_ATHLETE_SEARCH,
+  RECEIVED_SINGLE_ATHLETE,
+  GET_STUDENT_ATHLETE } from '../actions/action';
 
 const intitalStateApi = {
   studentAthletesArray: [],
   all: [],
-  studentAthlete: null,
-  gettingStudentAthletes: false
+  singleAthlete: [],
+  gettingStudentAthletes: false,
+  gettingSingleAthlete: false
 };
 
 function studentAthlete(state = intitalStateApi, action) {
   switch(action.type) {
-
+/*
     case 'GET_STUDENT_ATHLETES' :
       return {
         ...state,
         studentAthletesArray: action.payload.data
       }
-
+*/
 
     case 'START_STUDENT_ATHLETES_SEARCH' :
       return {
@@ -32,18 +37,20 @@ function studentAthlete(state = intitalStateApi, action) {
         gettingStudentAthletes: false
       }
 
-
-
-    case 'GET_STUDENT_ATHLETE' :
-      return {
-        ...state,
-        studentAthlete: action.payload.data
-      }
-
-    case 'RECEIVED_STUDENT_ATHLETES' :
+//*************************************************
+      case 'START_SINGLE_ATHLETE_SEARCH' :
         return {
           ...state,
-          studentAthlete: action.studentAthletes
+          gettingSingleAthlete: true
+      }
+
+      case 'RECEIVED_SINGLE_ATHLETE' :
+      console.log('in reducer for recieved single athlete')
+      console.log(action.singleAthlete)
+        return {
+          ...state,
+          singleAthlete: action.singleAthlete,
+          gettingSingleAthlete: false
         }
 
 
