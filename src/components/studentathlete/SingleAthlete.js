@@ -21,12 +21,12 @@ class SingleAthlete extends Component{
 
     return(
       <div className="container">
-
-      <h3>Frist Name: {this.props.singleAthlete.firstName} </h3>
-      <h3>Middle Name: {this.props.singleAthlete.middleName} </h3>
-      <h3>Last Name: {this.props.singleAthlete.lastName} </h3>
-      <h3>Birthday: {this.props.singleAthlete.birthdate} </h3>
-
+        <h3>First Name: {this.props.singleAthlete.firstName} </h3>
+        <h3>Middle Name: {this.props.singleAthlete.middleName} </h3>
+        <h3>Last Name: {this.props.singleAthlete.lastName} </h3>
+        <h3>Birthday: {this.props.singleAthlete.birthdate} </h3>
+        <h3>Year Entering Univ. : {this.props.singleAthlete.intended_enrollment_year} </h3>
+        <h3>Teams of Interest: {this.props.singleAthlete.gender} </h3>
       </div>
     );
   }

@@ -9,12 +9,25 @@ import './addAthlete.css';
 
 class NewStudentAthlete extends Component{
 
+static contextTypes = {
+    router: PropTypes.object
+  }
+
+onSubmit(props){
+  console.log(this.props);
+   this.props.createStudentAthlete(props)
+   .then(() => {
+       this.context.router.push('/studentAthletes');
+     });
+
+ }
+
   render() {
 
-  const { fields:{ firstName, middleName, lastName, birthdate }, handleSubmit, pristine, reset, submitting } = this.props;
+  const { fields:{ firstName, middleName, lastName, birthdate, gender, intended_enrollment_year }, handleSubmit, pristine, reset, submitting } = this.props;
   return (
     <div className="Home-intro">
-      <Form horizontal onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Grid>
           <Row className="show-grid">
             <hr/>
@@ -59,10 +72,28 @@ class NewStudentAthlete extends Component{
               placeholder="MM/DD/YYYY"
             /></Col>
           </Row>
-
           <Row className="show-grid">
             <br/>
           </Row>
+
+          <Row>
+            <Col xs={ 6 } md={ 2 }>
+              <label>Year Entering University:</label>
+            </Col>
+            <Col xs={ 6 } md={ 2 }>
+              <Field name="intended_enrollment_year" component="select">
+                <option></option>
+                <option value="Fall 2018 or Spring 2019">Fall 2018 or Spring 2019</option>
+                <option value="Fall 2019 or Spring 2020">Fall 2019 or Spring 2020</option>
+                <option value="Fall 2020 or Spring 2021">Fall 2020 or Spring 2021</option>
+                <option value="Fall 2021 or Spring 2022">Fall 2021 or Spring 2022</option>
+                <option value="Fall 2022 or Spring 2023">Fall 2022 or Spring 2023</option>
+                <option value="Fall 2023 or Spring 2024">Fall 2023 or Spring 2024</option>
+              </Field>
+            </Col>
+          </Row>
+
+
 
           <Row>
             <Col xs={ 6 } md={ 5 }><label> Select The Type of Team You Want to be Recruited By:</label></Col>
@@ -109,5 +140,5 @@ class NewStudentAthlete extends Component{
 
 export default reduxForm({
   form: 'NewStudentAthleteForm',
-  fields: [ 'firstName', 'middleName', 'lastName', 'birthdate' ]
+  fields: [ 'firstName', 'middleName', 'lastName', 'birthdate', 'gender', 'intended_enrollment_year' ]
 }, null, { createStudentAthlete })( NewStudentAthlete );
