@@ -99,7 +99,6 @@ export function setIdToken() {
   localStorage.setItem(ID_TOKEN_KEY, idToken);
 }
 
-// new studentAthlete record
 export const GET_STUDENT_ATHLETES = "GET_STUDENT_ATHLETES";
 export const START_STUDENT_ATHLETES_SEARCH = "START_STUDENT_ATHLETES_SEARCH";
 export const RECEIVED_STUDENT_ATHLETES = "RECEIVED_STUDENT_ATHLETES";
@@ -109,6 +108,9 @@ export const START_SINGLE_ATHLETE_SEARCH = "START_SINGLE_ATHLETE_SEARCH";
 export const RECEIVED_SINGLE_ATHLETE = "RECEIVED_SINGLE_ATHLETE";
 
 export const CREATE_STUDENT_ATHLETE = "CREATE_STUDENT_ATHLETE";
+export const START_CREATE_STUDENT_ATHLETE = "START_CREATE_STUDENT_ATHLETE";
+export const RECEIVED_CREATE_STUDENT_ATHLETE = "RECEIVED_CREATE_STUDENT_ATHLETE";
+
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
 const API_URL = "http://localhost:5000/api/v1" ;
@@ -172,18 +174,33 @@ export function receivedSingleAthlete(athlete){
   }
 }
 
+export function startCreateStudentAthlete(){
+  return {
+    type : 'START_CREATE_STUDENT_ATHLETE'
+  }
+}
 
-
-
-
-
+export function receivedCreateStudentAthlete(athlete){
+  return{
+    type: "RECEIVED_CREATE_STUDENT_ATHLETE"
+  }
+}
 
 export function createStudentAthlete(props){
-  const request = axios.post('http://localhost:5000/api/v1/student_athletes', props);
-  return{
-    type: CREATE_STUDENT_ATHLETE,
-    payload: request
-  };
+  console.log('inside create athlete')
+  console.log(props)
+  let url = API_URL + '/student_athletes/'
+  return (dispatch) => {
+    dispatch(startCreateStudentAthlete())
+      return axios.post( url, props ).then(
+        (response) => {
+            dispatch(receivedCreateStudentAthlete())
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
 }
 
 /*

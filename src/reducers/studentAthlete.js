@@ -1,8 +1,7 @@
 import { START_STUDENT_ATHLETES_SEARCH,
   RECEIVED_STUDENT_ATHLETES,
   START_SINGLE_ATHLETE_SEARCH,
-  RECEIVED_SINGLE_ATHLETE,
-  GET_STUDENT_ATHLETE } from '../actions/action';
+  RECEIVED_SINGLE_ATHLETE } from '../actions/action';
 
 const intitalStateApi = {
   studentAthletesArray: [],
@@ -28,20 +27,18 @@ function studentAthlete(state = intitalStateApi, action) {
         gettingStudentAthletes: false
       }
 
-      case 'START_SINGLE_ATHLETE_SEARCH' :
-        return {
-          ...state,
-          gettingSingleAthlete: true
-      }
+    case 'START_SINGLE_ATHLETE_SEARCH' :
+      return {
+        ...state,
+        gettingSingleAthlete: true
+    }
 
-      case 'RECEIVED_SINGLE_ATHLETE' :
-      console.log('in reducer for recieved single athlete')
-      console.log(action.singleAthlete)
-        return {
-          ...state,
-          singleAthlete: action.singleAthlete,
-          gettingSingleAthlete: false
-        }
+    case 'RECEIVED_SINGLE_ATHLETE' :
+      return {
+        ...state,
+        singleAthlete: action.singleAthlete,
+        gettingSingleAthlete: false
+      }
 
     default:
      return state;
