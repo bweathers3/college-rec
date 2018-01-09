@@ -1,11 +1,8 @@
-//import React, { Component } from 'react';
-//import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as action from '../../actions/action';
-import Main from '../../pages/Main';
-//import { Grid, Row, Col } from 'react-bootstrap';
-import './App.css';
+import main from '../../pages/main';
+import './app.css';
 
 function mapStateToProps(state) {
   return {
@@ -19,6 +16,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(action, dispatch);
 }
 
-const App = connect(mapStateToProps, mapDispatchToProps)(Main);
+const App = connect(mapStateToProps, mapDispatchToProps)(main);
 
 export default App;

@@ -4,14 +4,9 @@ import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getStudentAthletes } from '../../actions/action';
 
-//import './?.css';
-
 class StudentAthletes extends React.Component {
   componentWillMount(){
     this.props.getStudentAthletes();
-    console.log('test load getStudentAthlete')
-    console.log(this.props.getStudentAthletes())
-
   }
 
   renderStudentAthletes(){
