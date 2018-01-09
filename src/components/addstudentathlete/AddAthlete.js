@@ -6,21 +6,50 @@ import { Form, Col, Grid, Row, Button, Radio } from "react-bootstrap";
 import { isLoggedIn, createStudentAthlete } from '../../actions/action';
 import './addAthlete.css';
 
+const validate = values => {
+    const errors = {}
+    if (!values.firstName) {
+      errors.firstName = 'Required'
+    } else if (values.firstName.length < 2) {
+      errors.firstName = 'Minimum be 2 characters or more'
+    }
+    if (!values.lastName) {
+        errors.lastName = 'Required'
+      } else if (values.lastName.length < 2) {
+        errors.lastName = 'Minimum be 2 characters or more'
+    }
+    if (!values.birthdate) {
+        errors.birthdate = 'Required'
+    }
+    if (!values.gender) {
+        errors.gender = 'Required'
+    }
+    return errors
+}
+
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <Row>
+    <Col xs={ 12 } md={ 6 }><label className="control-label">{label}</label></Col>
+    <Col xs={ 12 } md={ 6 }>
+      <input { ...input } placeholder={ label } type={ type } className="form-control" />
+      { touched && ((error && <span className="text-danger">{ error }</span>) || (warning && <span>{ warning }</span>)) }
+    </Col>
+  </Row>
+)
 
 class NewStudentAthlete extends Component{
 
-static contextTypes = {
+  static contextTypes = {
     router: PropTypes.object
   }
 
-onSubmit(props){
-  console.log(this.props);
-   this.props.createStudentAthlete(props)
-   .then(() => {
-       this.context.router.push('/studentAthletes');
-     });
-
- }
+  onSubmit(props){
+    console.log(this.props);
+    this.props.createStudentAthlete(props)
+      .then(() => {
+        this.context.router.push('/studentAthletes');
+      });
+  }
 
   render() {
 
@@ -33,43 +62,43 @@ onSubmit(props){
             <hr/>
           </Row>
           <Row>
-            <Col xs={ 6 } md={ 2 }><label>First Name:</label></Col>
             <Col xs={ 6 } md={ 4 }><Field
               name="firstName"
-              component="input"
+              component={ renderField }
               type="text"
               label="First Name"
               placeholder="First Name"
             /></Col>
           </Row>
           <Row>
-            <Col xs={ 6 } md={ 2 }><label>Middle Name:</label></Col>
             <Col xs={ 6 } md={ 4 }><Field
               name="middleName"
-              component="input"
+              component={ renderField }
               type="text"
               label="Middle Name"
               placeholder="Middle Name"
             /></Col>
           </Row>
           <Row>
-            <Col xs={ 6 } md={ 2 }><label>Last Name:</label></Col>
+
             <Col xs={ 6 } md={ 4 }><Field
               name="lastName"
-              component="input"
+              component={ renderField }
               type="text"
               label="Last Name"
               placeholder="Last Name"
             /></Col>
           </Row>
           <Row>
-            <Col xs={ 6 } md={ 2 }><label>Birthday:</label></Col>
             <Col xs={ 6 } md={ 4 }><Field
               name="birthdate"
-              component="input"
+              component={ renderField }
               type="date"
               label="Birthday"
               placeholder="MM/DD/YYYY"
+              inputValueFormat="DD/MM/YYYY"
+              dateFormat="MM-DD-YYYY"
+
             /></Col>
           </Row>
           <Row className="show-grid">
@@ -92,7 +121,9 @@ onSubmit(props){
               </Field>
             </Col>
           </Row>
-
+          <Row className="show-grid">
+            <br/>
+          </Row>
 
 
           <Row>
@@ -140,5 +171,6 @@ onSubmit(props){
 
 export default reduxForm({
   form: 'NewStudentAthleteForm',
-  fields: [ 'firstName', 'middleName', 'lastName', 'birthdate', 'gender', 'intended_enrollment_year' ]
+  fields: [ 'firstName', 'middleName', 'lastName', 'birthdate', 'gender', 'intended_enrollment_year' ],
+  validate
 }, null, { createStudentAthlete })( NewStudentAthlete );

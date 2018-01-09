@@ -30,6 +30,9 @@ class StudentAthletes extends React.Component {
     return (
       <div>
         <Grid>
+        <Row className="show-grid">
+          <hr/>
+        </Row>
           <Row>
             <Col md={ 4 }>
               Your Athlete(s)
