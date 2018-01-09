@@ -9,7 +9,6 @@ export function homeBaseState() {
   }
 }
 
-//####################### auth0 login/logout
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 const CLIENT_ID = 'WvJ6rYTxRexqciAB_bJr6d2PHFMmLmNx';
@@ -202,13 +201,3 @@ export function createStudentAthlete(props){
     )
   }
 }
-
-/*
-export function deleteStudentAthlete(id){
-  const request = axios.delete('${API_URL}/student_athletes/${id}');
-  return{
-    type: DELETE_STUDENT_ATHLETE,
-    payload: request
-  };
-}
-*/
