@@ -13,7 +13,8 @@ const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 const CLIENT_ID = 'WvJ6rYTxRexqciAB_bJr6d2PHFMmLmNx';
 const CLIENT_DOMAIN = 'get-recruited.auth0.com';
-const REDIRECT = 'http://localhost:3000/callback';
+//const REDIRECT = 'http://localhost:3000/callback'; // development
+const REDIRECT = 'https://intense-mesa-15069.herokuapp.com/callback'; // development
 const SCOPE = 'openid';
 const AUDIENCE = 'https://get-recruited.auth0.com/userinfo';
 
@@ -112,8 +113,8 @@ export const RECEIVED_CREATE_STUDENT_ATHLETE = "RECEIVED_CREATE_STUDENT_ATHLETE"
 
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
-const API_URL = "http://localhost:5000/api/v1" ;
-
+//const API_URL = "http://localhost:5000/api/v1" ; // development
+const API_URL = "https://intense-plateau-74097.herokuapp.com/api/v1" ; // heroku production
 
 export function getStudentAthletes(){
   let url = API_URL + '/student_athletes'
