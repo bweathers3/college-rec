@@ -119,6 +119,7 @@ const API_URL = "https://intense-plateau-74097.herokuapp.com/api/v1" ; // heroku
 export function getStudentAthletes(){
   let url = API_URL + '/student_athletes'
   return (dispatch) => {
+    type: GET_STUDENT_ATHLETES,
     dispatch(startStudentAthletesSearch())
       return axios.get( url ).then(
         (response) => {
@@ -134,13 +135,13 @@ export function getStudentAthletes(){
 
 export function startStudentAthletesSearch(){
   return {
-    type : 'START_STUDENT_ATHLETES_SEARCH'
+    type : START_STUDENT_ATHLETES_SEARCH
   }
 }
 
 export function receivedStudentAthletes(athletes){
   return{
-    type: "RECEIVED_STUDENT_ATHLETES",
+    type: RECEIVED_STUDENT_ATHLETES,
     studentAthletesArray: athletes
    }
 }
@@ -148,6 +149,7 @@ export function receivedStudentAthletes(athletes){
 export function getSingleAthlete(id){
   let url = API_URL + '/student_athletes/' + id
   return (dispatch) => {
+    type: GET_SINGLE_ATHLETE,
     dispatch(startSingleAthleteSearch())
       return axios.get( url ).then(
         (response) => {
@@ -163,34 +165,33 @@ export function getSingleAthlete(id){
 
 export function startSingleAthleteSearch(){
   return {
-    type : 'START_SINGLE_ATHLETE_SEARCH'
+    type : START_SINGLE_ATHLETE_SEARCH
   }
 }
 
 export function receivedSingleAthlete(athlete){
   return{
-    type: "RECEIVED_SINGLE_ATHLETE",
+    type: RECEIVED_SINGLE_ATHLETE,
     singleAthlete: athlete
   }
 }
 
 export function startCreateStudentAthlete(){
   return {
-    type : 'START_CREATE_STUDENT_ATHLETE'
+    type : START_CREATE_STUDENT_ATHLETE
   }
 }
 
 export function receivedCreateStudentAthlete(athlete){
   return{
-    type: "RECEIVED_CREATE_STUDENT_ATHLETE"
+    type: RECEIVED_CREATE_STUDENT_ATHLETE
   }
 }
 
 export function createStudentAthlete(props){
-  console.log('inside create athlete')
-  console.log(props)
   let url = API_URL + '/student_athletes/'
   return (dispatch) => {
+    type: CREATE_STUDENT_ATHLETE,
     dispatch(startCreateStudentAthlete())
       return axios.post( url, props ).then(
         (response) => {

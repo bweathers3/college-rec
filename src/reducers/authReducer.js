@@ -6,6 +6,7 @@ function authReducer(state = { error: '' }, action) {
       return Object.assign({}, state, {
         isAuthenticated: true,
         profile: action.profile,
+        idToken: action.idToken,
         error: ''
       })
 
