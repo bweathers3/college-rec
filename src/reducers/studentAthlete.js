@@ -1,7 +1,4 @@
-import { START_STUDENT_ATHLETES_SEARCH,
-  RECEIVED_STUDENT_ATHLETES,
-  START_SINGLE_ATHLETE_SEARCH,
-  RECEIVED_SINGLE_ATHLETE } from '../actions/action';
+
 
 const intitalStateApi = {
   studentAthletesArray: [],
@@ -13,6 +10,11 @@ const intitalStateApi = {
 
 function studentAthlete(state = intitalStateApi, action) {
   switch(action.type) {
+
+    case 'GET_STUDENT_ATHLETE' :
+      return {
+        ...state
+    }
 
     case 'START_STUDENT_ATHLETES_SEARCH' :
       return {
@@ -26,6 +28,11 @@ function studentAthlete(state = intitalStateApi, action) {
         studentAthletesArray: action.studentAthletesArray,
         gettingStudentAthletes: false
       }
+
+    case 'GET_SINGLE_ATHLETE' :
+      return {
+        ...state
+    }
 
     case 'START_SINGLE_ATHLETE_SEARCH' :
       return {
