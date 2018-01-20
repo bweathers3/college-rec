@@ -5,7 +5,8 @@ const intitalStateApi = {
   all: [],
   singleAthlete: [],
   gettingStudentAthletes: false,
-  gettingSingleAthlete: false
+  gettingSingleAthlete: false,
+  athleteId: ""
 };
 
 function studentAthlete(state = intitalStateApi, action) {
@@ -41,15 +42,18 @@ function studentAthlete(state = intitalStateApi, action) {
     }
 
     case 'RECEIVED_SINGLE_ATHLETE' :
+        console.log('RECEIVED_SINGLE_ATHLETE' + action.singleAthlete.id)
       return {
         ...state,
         singleAthlete: action.singleAthlete,
+        athleteId: action.singleAthlete.id,
         gettingSingleAthlete: false
       }
 
     default:
      return state;
  }
+
 }
 
 export default studentAthlete;

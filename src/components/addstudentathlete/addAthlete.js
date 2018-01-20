@@ -44,7 +44,7 @@ class NewStudentAthlete extends Component{
   }
 
   onSubmit(props){
-    console.log(this.props);
+    console.log('add athlete' + props);
     this.props.createStudentAthlete(props)
       .then(() => {
         this.context.router.push('/studentAthletes');
@@ -154,7 +154,7 @@ class NewStudentAthlete extends Component{
             <Col xs={ 4 } className="buttons">
               <Button bsStyle="primary" bsSize="sm" type="submit"
                 disabled={submitting}>Submit New Athlete Information</Button>
-                </Col>
+            </Col>
             <Col xs={ 1 } className="buttons">
               <Button type="button" bsSize="sm" disabled={pristine || submitting} onClick={reset}>Clear
                 Values</Button>

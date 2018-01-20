@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { getSingleAthlete } from '../../actions/action';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { getSingleAthlete, isLoggedIn } from '../../actions/action';
 
 class SingleAthlete extends Component{
   static contextTypes = {
@@ -10,13 +12,14 @@ class SingleAthlete extends Component{
 
   componentWillMount(){
     this.props.getSingleAthlete(this.props.params.id);
+    console.log(this.props.singleAthlete)
   }
 
   render(){
     if(!this.props.singleAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
-
+    console.log('single athlete 2' + this.props.singleAthlete)
     return(
       <div className="container">
         <h3>First Name: {this.props.singleAthlete.firstName} </h3>
@@ -25,7 +28,13 @@ class SingleAthlete extends Component{
         <h3>Birthday: {this.props.singleAthlete.birthdate} </h3>
         <h3>Year Entering Univ. : {this.props.singleAthlete.intended_enrollment_year} </h3>
         <h3>Teams of Interest: {this.props.singleAthlete.gender} </h3>
+
+        <Link to='/addProfile/new'>
+          <button className="btn btn-success log">Add New Athlete Profile</button>
+        </Link>
+
       </div>
+
     );
   }
 }

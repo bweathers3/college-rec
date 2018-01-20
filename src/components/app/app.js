@@ -8,6 +8,7 @@ function mapStateToProps(state) {
   return {
     authReducer: state.authReducer,
     salesPointsHome: state.salesPointsHome,
+    studentAthlete: state.studentAthlete,
     tabControl: state.tabControl
   }
 }
