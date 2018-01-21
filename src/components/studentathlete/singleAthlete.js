@@ -27,11 +27,10 @@ class SingleAthlete extends Component{
         <h3>Birthday: {this.props.singleAthlete.birthdate} </h3>
         <h3>Year Entering Univ. : {this.props.singleAthlete.intended_enrollment_year} </h3>
         <h3>Teams of Interest: {this.props.singleAthlete.gender} </h3>
-/*
+
         <Link to='/addProfile/new'>
           <button className="btn btn-success log">Add New Athlete Profile</button>
         </Link>
-*/
         <Link to='/addAcademic/new'>
           <button className="btn btn-success log">Add Academic Information</button>
         </Link>
