@@ -119,6 +119,10 @@ export const CREATE_ACADEMIC = "CREATE_ACADEMIC";
 export const START_CREATE_ACADEMIC = "START_CREATE_ACADEMIC";
 export const RECEIVED_CREATE_ACADEMIC = "RECEIVED_CREATE_ACADEMIC";
 
+export const CREATE_ATHLETIC = "CREATE_ATHLETIC";
+export const START_CREATE_ATHLETIC = "START_CREATE_ATHLETIC";
+export const RECEIVED_CREATE_ATHLETIC = "RECEIVED_CREATE_ATHLETIC";
+
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
 
@@ -269,5 +273,34 @@ export function startCreateAcademic(){
 export function receivedCreateAcademic(profile){
   return{
     type: RECEIVED_CREATE_ACADEMIC
+  }
+}
+
+export function createAthletic(id, props){
+  let url = API_URL + '/athletics/'
+  return (dispatch) => {
+    type: CREATE_ATHLETIC,
+    dispatch(startCreateAthletic())
+        let final_obj = {student_athlete_id: id, profile: props};
+        return axios.post( url, final_obj ).then(
+        (response) => {
+            dispatch(receivedCreateAthletic())
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startCreateAthletic(){
+  return {
+    type : START_CREATE_ATHLETIC
+  }
+}
+
+export function receivedCreateAthletic(profile){
+  return{
+    type: RECEIVED_CREATE_ATHLETIC
   }
 }

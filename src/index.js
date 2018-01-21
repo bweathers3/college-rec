@@ -14,6 +14,7 @@ import singleAthlete from './components/studentathlete/singleAthlete';
 import addAthlete from './components/addstudentathlete/addAthlete';
 import addProfile from './components/addprofile/addProfile';
 import addAcademic from './components/addacademic/addAcademic';
+import addAthletic from './components/addathletic/addAthletic';
 
 const router = (
   <Provider store={ store }>
@@ -26,6 +27,7 @@ const router = (
         <Route path="/singleAthlete/:id" component={ singleAthlete } />
         <Route path="/addProfile/new" component={ addProfile } />
         <Route path="/addAcademic/new" component={ addAcademic } />
+        <Route path="/addAthletic/new" component={ addAthletic } />
       </Route>
     </Router>
   </Provider>
