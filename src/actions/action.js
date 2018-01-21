@@ -115,6 +115,10 @@ export const CREATE_PROFILE = "CREATE_PROFILE";
 export const START_CREATE_PROFILE = "START_CREATE_PROFILE";
 export const RECEIVED_CREATE_PROFILE = "RECEIVED_CREATE_PROFILE";
 
+export const GET_PROFILE = "GET_PROFILE";
+export const START_GET_PROFILE = "START_GET_PROFILE";
+export const RECEIVED_GET_PROFILE = "RECEIVED_GET_PROFILE";
+
 export const CREATE_ACADEMIC = "CREATE_ACADEMIC";
 export const START_CREATE_ACADEMIC = "START_CREATE_ACADEMIC";
 export const RECEIVED_CREATE_ACADEMIC = "RECEIVED_CREATE_ACADEMIC";
@@ -302,5 +306,35 @@ export function startCreateAthletic(){
 export function receivedCreateAthletic(profile){
   return{
     type: RECEIVED_CREATE_ATHLETIC
+  }
+}
+
+export function getProfile(id){
+  let url = API_URL + '/profiles/' + id
+  return (dispatch) => {
+    type: GET_PROFILE,
+    dispatch(startGetProfile())
+      return axios.get( url ).then(
+        (response) => {
+          let singleProfile = response.data;
+            dispatch(receivedGetProfile(singleProfile))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startGetProfile(){
+  return {
+    type : START_GET_PROFILE
+  }
+}
+
+export function receivedGetProfile(singleProfile){
+  return{
+    type: RECEIVED_GET_PROFILE,
+    singleProfile: singleProfile
   }
 }

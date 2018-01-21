@@ -22,6 +22,7 @@ function authReducer(state = { error: '' }, action) {
         isAuthenticated: false,
         profile: null
       })
+      
     default:
       return state
     }

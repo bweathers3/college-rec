@@ -1,11 +1,12 @@
 
-
 const intitalStateApi = {
   studentAthletesArray: [],
   all: [],
   singleAthlete: [],
+  singleProfile: [],
   gettingStudentAthletes: false,
   gettingSingleAthlete: false,
+  gettingProfile: false,
   athleteId: ""
 };
 
@@ -42,12 +43,29 @@ function studentAthlete(state = intitalStateApi, action) {
     }
 
     case 'RECEIVED_SINGLE_ATHLETE' :
-        console.log('RECEIVED_SINGLE_ATHLETE' + action.singleAthlete.id)
       return {
         ...state,
         singleAthlete: action.singleAthlete,
         athleteId: action.singleAthlete.id,
         gettingSingleAthlete: false
+      }
+
+    case 'GET_PROFILE' :
+      return {
+        ...state
+    }
+
+    case 'START_GET_PROFILE' :
+      return {
+        ...state,
+        gettingProfile: true
+    }
+
+    case 'RECEIVED_GET_PROFILE' :
+      return {
+        ...state,
+        singleProfile: action.singleProfile,
+        gettingProfile: false,
       }
 
     default:
