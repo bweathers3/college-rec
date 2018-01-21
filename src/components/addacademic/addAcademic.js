@@ -3,42 +3,33 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Form, Col, Grid, Row, Button } from "react-bootstrap";
-import { isLoggedIn, createProfile } from '../../actions/action';
-import './addProfile.css';
+import { isLoggedIn, createAcademic } from '../../actions/action';
+import './addacademic.css';
 
 
 const validate = values => {
     const errors = {}
-    if (!values.street) {
-      errors.street = 'Required'
-    } else if (values.street.length < 2) {
-      errors.street = 'Minimum be 2 characters or more'
+    if (!values.schoolName) {
+      errors.schoolName = 'Required'
+    } else if (values.schoolName.length < 2) {
+      errors.schoolName = 'Minimum be 2 characters or more'
     }
-    if (!values.city) {
-        errors.city = 'Required'
-      } else if (values.city.length < 2) {
-        errors.city = 'Minimum be 2 characters or more'
+    if (!values.counselorName) {
+        errors.counselorName = 'Required'
+      } else if (values.counselorName.length < 2) {
+        errors.counselorName = 'Minimum be 2 characters or more'
     }
-    if (!values.state) {
-        errors.state = 'Required'
-      } else if (values.state.length < 2) {
-        errors.state = 'Minimum be 2 characters or more'
+    if (!values.counselorEmail) {
+        errors.counselorEmail = 'Required'
+      } else if (values.counselorEmail.length < 2) {
+        errors.counselorEmail = 'Minimum be 2 characters or more'
     }
-    if (!values.country) {
-        errors.country = 'Required'
-      } else if (values.country.length < 2) {
-        errors.country = 'Minimum be 2 characters or more'
+    if (!values.counselorPhone) {
+        errors.counselorPhone = 'Required'
+      } else if (values.counselorPhone.length < 2) {
+        errors.counselorPhone = 'Minimum be 2 characters or more'
     }
-    if (!values.email) {
-        errors.email = 'Required'
-      } else if (values.email.length < 2) {
-        errors.email = 'Minimum be 2 characters or more'
-    }
-    if (!values.phone) {
-        errors.phone = 'Required'
-      } else if (values.phone.length < 6) {
-        errors.phone = 'Minimum be 2 characters or more'
-    }
+
     return errors
 }
 
@@ -52,7 +43,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   </Row>
 )
 
-class NewProfile extends Component{
+class NewAcademic extends Component{
 
   static contextTypes = {
     router: PropTypes.object
@@ -60,14 +51,14 @@ class NewProfile extends Component{
 
   onSubmit(props){
     const { athleteId } = this.props.studentAthlete;
-    this.props.createProfile(athleteId, props)
+    this.props.createAcademic(athleteId, props)
       .then(() => {
         this.context.router.push('/studentAthletes');
       });
   }
 
   render() {
-    const { fields:{ street, city, state, zip, country, email, phone, siblings  }, handleSubmit, pristine, reset, submitting } = this.props;
+    const { fields:{ schoolName, counselorName, counselorEmail, counselorPhone, gpa, classRank, sat, act  }, handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
       <div className="Home-intro">
@@ -78,68 +69,38 @@ class NewProfile extends Component{
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="street"
+                name="schoolName"
                 component={ renderField }
                 type="text"
-                label="Your Street Address:"
-                placeholder="Street"
+                label="Your High School firstName:"
+                placeholder="High School"
               /></Col>
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="city"
+                name="counselorName"
                 component={ renderField }
                 type="text"
-                label="Your City:"
-                placeholder="City"
+                label="Your Counselor's Name:"
+                placeholder="Counselor's Name"
               /></Col>
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="state"
+                name="counselorEmail"
                 component={ renderField }
-                type="string"
-                label="Your State or Providence"
-                placeholder="State or Providence"
+                type="text"
+                label="Your Counselor's Email:"
+                placeholder="Counselor's Email"
               /></Col>
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="zip"
+                name="counselorPhone"
                 component={ renderField }
                 type="string"
-                label="Your Zip or Mail Code"
-                placeholder="Zip or Mail Code"
-              /></Col>
-            </Row>
-            <Row>
-            <Col xs={ 6 } md={ 4 }><Field
-              name="country"
-              component={ renderField }
-              type="text"
-              label="Your Country"
-              placeholder="Country"
-            /></Col>
-            </Row>
-            <Row className="show-grid">
-              <br/>
-            </Row>
-            <Row>
-              <Col xs={ 6 } md={ 4 }><Field
-                name="email"
-                component={ renderField }
-                type="string"
-                label="Your Email Address"
-                placeholder="Email Address"
-              /></Col>
-            </Row>
-            <Row>
-              <Col xs={ 6 } md={ 4 }><Field
-                name="phone"
-                component={ renderField }
-                type="string"
-                label="Your Phone Number with Country Code"
-                placeholder="Phone Number"
+                label="Your Counselor's Phone:"
+                placeholder="Counselor's Phone"
               /></Col>
             </Row>
             <Row className="show-grid">
@@ -147,11 +108,41 @@ class NewProfile extends Component{
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="siblings"
+                name="gpa"
                 component={ renderField }
-                type="text"
-                label="Your Sibling's Names"
-                placeholder="Sibling's Names"
+                type="string"
+                label="Your GPA:"
+                placeholder="GPA"
+              /></Col>
+            </Row>
+            <Row>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="classRank"
+                component={ renderField }
+                type="string"
+                label="Your ClassRank:"
+                placeholder="ClassRank"
+              /></Col>
+            </Row>
+            <Row className="show-grid">
+              <br/>
+            </Row>
+            <Row>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="sat"
+                component={ renderField }
+                type="string"
+                label="Your Best SAT Score:"
+                placeholder="SATs"
+              /></Col>
+            </Row>
+            <Row>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="act"
+                component={ renderField }
+                type="string"
+                label="Your Best ACT Score:"
+                placeholder="ACTs"
               /></Col>
             </Row>
             <Row className="show-grid">
@@ -161,7 +152,7 @@ class NewProfile extends Component{
               <Col xs={ 12 } sm={ 8 } className="buttons">
                 <Col xs={ 4 } className="buttons">
                   <Button bsStyle="primary" bsSize="sm" type="submit"
-                  disabled={submitting}>Submit Athlete Profile Information</Button>
+                  disabled={submitting}>Submit Academic Information</Button>
                 </Col>
              </Col>
             </Row>
@@ -173,7 +164,7 @@ class NewProfile extends Component{
 };
 
 export default reduxForm({
-  form: 'NewProfileForm',
-  fields: [ 'street', 'city', 'state', 'zip', 'country', 'email', 'phone', 'siblings'  ],
+  form: 'NewAcademicForm',
+  fields: [ 'schoolName', 'counselorName', 'counselorEmail', 'counselorPhone', 'gpa', 'classRank', 'sat', 'act'  ],
   validate
-}, null, { createProfile })( NewProfile );
+}, null, { createAcademic })( NewAcademic );

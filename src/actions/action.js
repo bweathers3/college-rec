@@ -115,6 +115,10 @@ export const CREATE_PROFILE = "CREATE_PROFILE";
 export const START_CREATE_PROFILE = "START_CREATE_PROFILE";
 export const RECEIVED_CREATE_PROFILE = "RECEIVED_CREATE_PROFILE";
 
+export const CREATE_ACADEMIC = "CREATE_ACADEMIC";
+export const START_CREATE_ACADEMIC = "START_CREATE_ACADEMIC";
+export const RECEIVED_CREATE_ACADEMIC = "RECEIVED_CREATE_ACADEMIC";
+
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
 
@@ -210,33 +214,12 @@ export function receivedCreateStudentAthlete(athlete){
   }
 }
 
-/*
-export function createProfile(id, props){
-  let url = API_URL + '/profiles/'
-  return (dispatch) => {
-    type: CREATE_PROFILE,
-    dispatch(startCreateProfile())
-      return axios.post( url, id, props ).then(
-        (response) => {
-            dispatch(receivedCreateProfile())
-        },
-        (err) => {
-          console.log(err);
-        }
-    )
-  }
-}
-*/
-
 export function createProfile(id, props){
   let url = API_URL + '/profiles/'
   return (dispatch) => {
     type: CREATE_PROFILE,
     dispatch(startCreateProfile())
         let final_obj = {student_athlete_id: id, profile: props};
-console.log('[action creator createProfile] (about to post) final_obj:');
-console.log(final_obj);
-        // return axios.post( url, id, props ).then(
         return axios.post( url, final_obj ).then(
         (response) => {
             dispatch(receivedCreateProfile())
@@ -257,5 +240,34 @@ export function startCreateProfile(){
 export function receivedCreateProfile(profile){
   return{
     type: RECEIVED_CREATE_PROFILE
+  }
+}
+
+export function createAcademic(id, props){
+  let url = API_URL + '/academics/'
+  return (dispatch) => {
+    type: CREATE_ACADEMIC,
+    dispatch(startCreateAcademic())
+        let final_obj = {student_athlete_id: id, profile: props};
+        return axios.post( url, final_obj ).then(
+        (response) => {
+            dispatch(receivedCreateAcademic())
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startCreateAcademic(){
+  return {
+    type : START_CREATE_ACADEMIC
+  }
+}
+
+export function receivedCreateAcademic(profile){
+  return{
+    type: RECEIVED_CREATE_ACADEMIC
   }
 }
