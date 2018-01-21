@@ -13,7 +13,7 @@ import studentAthletes from './components/studentathlete/studentAthletes';
 import singleAthlete from './components/studentathlete/singleAthlete';
 import addAthlete from './components/addstudentathlete/addAthlete';
 import addProfile from './components/addprofile/addProfile';
-import addAcademic from './components/addacademic/addAcademic';
+import addAcademic from './components/academic/addAcademic';
 import addAthletic from './components/addathletic/addAthletic';
 
 const router = (
