@@ -12,14 +12,13 @@ class SingleAthlete extends Component{
 
   componentWillMount(){
     this.props.getSingleAthlete(this.props.params.id);
-    console.log(this.props.singleAthlete)
   }
 
   render(){
     if(!this.props.singleAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
-    console.log('single athlete 2' + this.props.singleAthlete)
+    
     return(
       <div className="container">
         <h3>First Name: {this.props.singleAthlete.firstName} </h3>
@@ -31,6 +30,9 @@ class SingleAthlete extends Component{
 
         <Link to='/addProfile/new'>
           <button className="btn btn-success log">Add New Athlete Profile</button>
+        </Link>
+        <Link to='/addAcademic/new'>
+          <button className="btn btn-success log">Add Academic Information</button>
         </Link>
 
       </div>
