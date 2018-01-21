@@ -18,6 +18,7 @@ class Home extends Component {
   }
 
   render() {
+
     return (
 
       <div className="Home">
@@ -45,7 +46,7 @@ class Home extends Component {
 
         <Row className="container-sales-point">
           <Col xs={6} md={4}>
-            <p><strong>Point 1: </strong></p>
+            <p><strong>Point 2: </strong></p>
             <p>Test point 1 with a reason to be take control of your own recruiting</p>
           </Col>
           <Col xs={6} md={4}>

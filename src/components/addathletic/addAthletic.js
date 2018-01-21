@@ -3,32 +3,12 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Form, Col, Grid, Row, Button } from "react-bootstrap";
-import { isLoggedIn, createAcademic } from '../../actions/action';
-import './addAcademic.css';
+import { isLoggedIn, createAthletic } from '../../actions/action';
+import './addAthletic.css';
 
 
 const validate = values => {
     const errors = {}
-    if (!values.schoolName) {
-      errors.schoolName = 'Required'
-    } else if (values.schoolName.length < 2) {
-      errors.schoolName = 'Minimum be 2 characters or more'
-    }
-    if (!values.counselorName) {
-        errors.counselorName = 'Required'
-      } else if (values.counselorName.length < 2) {
-        errors.counselorName = 'Minimum be 2 characters or more'
-    }
-    if (!values.counselorEmail) {
-        errors.counselorEmail = 'Required'
-      } else if (values.counselorEmail.length < 2) {
-        errors.counselorEmail = 'Minimum be 2 characters or more'
-    }
-    if (!values.counselorPhone) {
-        errors.counselorPhone = 'Required'
-      } else if (values.counselorPhone.length < 2) {
-        errors.counselorPhone = 'Minimum be 2 characters or more'
-    }
 
     return errors
 }
@@ -43,7 +23,7 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   </Row>
 )
 
-class NewAcademic extends Component{
+class NewAthletic extends Component{
 
   static contextTypes = {
     router: PropTypes.object
@@ -51,14 +31,14 @@ class NewAcademic extends Component{
 
   onSubmit(props){
     const { athleteId } = this.props.studentAthlete;
-    this.props.createAcademic(athleteId, props)
+    this.props.createAthletic(athleteId, props)
       .then(() => {
         this.context.router.push('/studentAthletes');
       });
   }
 
   render() {
-    const { fields:{ schoolName, counselorName, counselorEmail, counselorPhone, gpa, classRank, sat, act  }, handleSubmit, pristine, reset, submitting } = this.props;
+    const { fields:{ stat1, stat2, stat3, stat4, stat5, stat6, stat7, stat8, stat9, stat10, stat11, stat12 }, handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
       <div className="Home-intro">
@@ -69,38 +49,25 @@ class NewAcademic extends Component{
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="schoolName"
-                component={ renderField }
-                type="text"
-                label="Your High School firstName:"
-                placeholder="High School"
-              /></Col>
-            </Row>
-            <Row>
-              <Col xs={ 6 } md={ 4 }><Field
-                name="counselorName"
-                component={ renderField }
-                type="text"
-                label="Your Counselor's Name:"
-                placeholder="Counselor's Name"
-              /></Col>
-            </Row>
-            <Row>
-              <Col xs={ 6 } md={ 4 }><Field
-                name="counselorEmail"
-                component={ renderField }
-                type="text"
-                label="Your Counselor's Email:"
-                placeholder="Counselor's Email"
-              /></Col>
-            </Row>
-            <Row>
-              <Col xs={ 6 } md={ 4 }><Field
-                name="counselorPhone"
+                name="stat1"
                 component={ renderField }
                 type="string"
-                label="Your Counselor's Phone:"
-                placeholder="Counselor's Phone"
+                label="50 Free SCY:"
+                placeholder="50 Free SCY"
+              /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat2"
+                component={ renderField }
+                type="string"
+                label="50 Free SCM:"
+                placeholder="50 Free SCM"
+              /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat3"
+                component={ renderField }
+                type="string"
+                label="50 Free LCM:"
+                placeholder="50 Free LCM"
               /></Col>
             </Row>
             <Row className="show-grid">
@@ -108,20 +75,25 @@ class NewAcademic extends Component{
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="gpa"
+                name="stat4"
                 component={ renderField }
                 type="string"
-                label="Your GPA:"
-                placeholder="GPA"
+                label="100 Free SCY:"
+                placeholder="100 Free SCY"
               /></Col>
-            </Row>
-            <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="classRank"
+                name="stat5"
                 component={ renderField }
                 type="string"
-                label="Your ClassRank:"
-                placeholder="ClassRank"
+                label="100 Free SCM:"
+                placeholder="100 Free SCM"
+              /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat6"
+                component={ renderField }
+                type="string"
+                label="100 Free LCM:"
+                placeholder="100 Free LCM"
               /></Col>
             </Row>
             <Row className="show-grid">
@@ -129,21 +101,55 @@ class NewAcademic extends Component{
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="sat"
+                name="stat7"
                 component={ renderField }
                 type="string"
-                label="Your Best SAT Score:"
-                placeholder="SATs"
+                label="200 Free SCY:"
+                placeholder="200 Free SCY"
               /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat8"
+                component={ renderField }
+                type="string"
+                label="200 Free SCM:"
+                placeholder="200 Free SCM"
+              /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat9"
+                component={ renderField }
+                type="string"
+                label="200 Free LCM:"
+                placeholder="200 Free LCM"
+              /></Col>
+            </Row>
+            <Row className="show-grid">
+              <br/>
             </Row>
             <Row>
               <Col xs={ 6 } md={ 4 }><Field
-                name="act"
+                name="stat10"
                 component={ renderField }
                 type="string"
-                label="Your Best ACT Score:"
-                placeholder="ACTs"
+                label="400 Free SCY:"
+                placeholder="400 Free SCY"
               /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat11"
+                component={ renderField }
+                type="string"
+                label="400 Free SCM:"
+                placeholder="400 Free SCM"
+              /></Col>
+              <Col xs={ 6 } md={ 4 }><Field
+                name="stat12"
+                component={ renderField }
+                type="string"
+                label="400 Free LCM:"
+                placeholder="400 Free LCM"
+              /></Col>
+            </Row>
+            <Row className="show-grid">
+              <br/>
             </Row>
             <Row className="show-grid">
               <br/>
@@ -164,7 +170,7 @@ class NewAcademic extends Component{
 };
 
 export default reduxForm({
-  form: 'NewAcademicForm',
-  fields: [ 'schoolName', 'counselorName', 'counselorEmail', 'counselorPhone', 'gpa', 'classRank', 'sat', 'act'  ],
+  form: 'NewAthleticForm',
+  fields: [ 'stat1', 'stat2', 'stat3', 'stat4', 'stat5', 'stat6', 'stat7', 'stat8', 'stat9', 'stat10', 'stat11', 'stat12' ],
   validate
-}, null, { createAcademic })( NewAcademic );
+}, null, { createAthletic })( NewAthletic );

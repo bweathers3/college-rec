@@ -18,7 +18,7 @@ class SingleAthlete extends Component{
     if(!this.props.singleAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
-    
+
     return(
       <div className="container">
         <h3>First Name: {this.props.singleAthlete.firstName} </h3>
@@ -34,7 +34,9 @@ class SingleAthlete extends Component{
         <Link to='/addAcademic/new'>
           <button className="btn btn-success log">Add Academic Information</button>
         </Link>
-
+        <Link to='/addAthletic/new'>
+          <button className="btn btn-success log">Add Athletic Information</button>
+        </Link>    
       </div>
 
     );
