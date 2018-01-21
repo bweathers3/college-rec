@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { getSingleAthlete, isLoggedIn } from '../../actions/action';
+import './style.css';
 
 class SingleAthlete extends Component{
   static contextTypes = {
