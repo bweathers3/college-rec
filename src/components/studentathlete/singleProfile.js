@@ -35,25 +35,25 @@ class SingleProfile extends Component{
           <Col xs={ 6 } md={ 8 }><h2>Address: </h2></Col>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.street } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.street } </h4></Col>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.city + ",  " + this.props.singleProfile.state + "   " + "   " + this.props.singleProfile.zip } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.city + ",  " + this.props.singleProfile.state + "   " + "   " + this.props.singleProfile.zip } </h4></Col>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.country } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.country } </h4></Col>
         </Row>
         <Row className="show-grid">
           <br/>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Email: {  this.props.singleProfile.email } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h4>Email: {  this.props.singleProfile.email } </h4></Col>
         </Row>
         <Row className="show-grid">
           <br/>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Phone: {  this.props.singleProfile.phone } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h4>Phone: {  this.props.singleProfile.phone } </h4></Col>
         </Row>
       </Grid>
       </div>
