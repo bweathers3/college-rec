@@ -16,6 +16,13 @@ import addProfile from './components/addprofile/addProfile';
 import addAcademic from './components/academic/addAcademic';
 import addAthletic from './components/addathletic/addAthletic';
 
+console.log('addProfile');
+console.log(addProfile);
+console.log('addAcademic');
+console.log(addAcademic);
+console.log('addAthletic');
+console.log(addAthletic);
+
 const router = (
   <Provider store={ store }>
     <Router history={ history }>
