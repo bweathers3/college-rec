@@ -19,8 +19,17 @@ class SingleAthlete extends Component{
     if(!this.props.singleAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
-    console.log('singleAthlete');
-    console.log(this.props.singleAthlete);
+
+    console.log(<Link to='/addProfile/new'>
+      <button className="btn btn-success log">Add New Athlete Profile</button>
+    </Link>);
+    console.log(<Link to='/addAcademic/new'>
+      <button className="btn btn-success log">Add Academic Information</button>
+    </Link>);
+    console.log(<Link to='/addAthletic/new'>
+      <button className="btn btn-success log">Add Athletic Information</button>
+    </Link>);
+
     return(
       <div className="container">
       <Grid>

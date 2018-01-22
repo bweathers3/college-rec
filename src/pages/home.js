@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { isLoggedIn } from '../actions/action';
+import { salesPoint1, salesPoint2, salesPoint3 } from '../appData/salesPoints';
 
 class Home extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Home extends Component {
   }
 
   render() {
-
+    
     return (
 
       <div className="Home">
@@ -46,16 +47,16 @@ class Home extends Component {
 
         <Row className="container-sales-point">
           <Col xs={6} md={4}>
-            <p><strong>Point 2: </strong></p>
-            <p>Test point 1 with a reason to be take control of your own recruiting</p>
+            <p><strong>{ salesPoint1.title }</strong></p>
+            <p>{ salesPoint1.description }</p>
           </Col>
           <Col xs={6} md={4}>
-            <p><strong>Point 2: </strong></p>
-            <p>Test point 2 with a reason to be take control of your own recruiting</p>
+            <p><strong>{ salesPoint2.title }</strong></p>
+            <p>{ salesPoint2.description }</p>
           </Col>
           <Col xs={6} md={4}>
-            <p><strong>Point 3: </strong></p>
-            <p>Test point 3 with a reason to be take control of your own recruiting and how GetRecruited helps you understand the recruiting process as you update coaches</p>
+            <p><strong>{ salesPoint3.title }</strong></p>
+            <p>{ salesPoint3.description }</p>
           </Col>
         </Row>
 
