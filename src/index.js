@@ -11,6 +11,7 @@ import store, { history } from './store';
 import callback from './components/callback';
 import studentAthletes from './components/studentathlete/studentAthletes';
 import singleAthlete from './components/studentathlete/singleAthlete';
+import singleProfile from './components/studentathlete/singleProfile';
 import addAthlete from './components/addstudentathlete/addAthlete';
 import addProfile from './components/addprofile/addProfile';
 import addAcademic from './components/academic/addAcademic';
@@ -32,6 +33,7 @@ const router = (
         <Route path="/studentAthletes" component={ studentAthletes } />
         <Route path="/addAthlete/new" component={ addAthlete } />
         <Route path="/singleAthlete/:id" component={ singleAthlete } />
+        <Route path="/singleProfile" component={ singleProfile } />
         <Route path="/addProfile/new" component={ addProfile } />
         <Route path="/addAcademic/new" component={ addAcademic } />
         <Route path="/addAthletic/new" component={ addAthletic } />
