@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router';
-import { Form, Col, Grid, Row, Button, Radio } from "react-bootstrap";
-import { isLoggedIn, createStudentAthlete } from '../../actions/action';
+import { Form, Col, Grid, Row, Button } from "react-bootstrap";
+import { createStudentAthlete } from '../../actions/action';
 import './addAthlete.css';
 
 const validate = values => {
@@ -44,7 +43,6 @@ class NewStudentAthlete extends Component{
   }
 
   onSubmit(props){
-    console.log('add athlete' + props);
     this.props.createStudentAthlete(props)
       .then(() => {
         this.context.router.push('/studentAthletes');
@@ -80,7 +78,6 @@ class NewStudentAthlete extends Component{
             /></Col>
           </Row>
           <Row>
-
             <Col xs={ 6 } md={ 4 }><Field
               name="lastName"
               component={ renderField }

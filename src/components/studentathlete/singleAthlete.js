@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { getSingleAthlete, getProfile, isLoggedIn } from '../../actions/action';
+import { getSingleAthlete } from '../../actions/action';
+import './style.css';
 
 class SingleAthlete extends Component{
   static contextTypes = {
@@ -12,7 +13,6 @@ class SingleAthlete extends Component{
 
   componentWillMount(){
     this.props.getSingleAthlete(this.props.params.id);
-    this.props.getProfile(this.props.params.id);
   }
 
   render(){
@@ -41,9 +41,6 @@ class SingleAthlete extends Component{
         <Row className="show-grid">
           <br/>
         </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Name: { this.props.singleProfile.City + ", " + this.props.singleProfile.state + "   " + this.props.singleProfile.zip } </h2></Col>
-        </Row>
       </Grid>
 
         <Link to='/addProfile/new'>
@@ -55,6 +52,9 @@ class SingleAthlete extends Component{
         <Link to='/addAthletic/new'>
           <button className="btn btn-success log">Add Athletic Information</button>
         </Link>
+        <Link to='/singleProfile'>
+          <button className="btn btn-primary log">Get Athlete Profile</button>
+        </Link>
       </div>
 
     );
@@ -62,9 +62,7 @@ class SingleAthlete extends Component{
 }
 
 function mapStateToProps(state){
-  return { singleAthlete: state.studentAthlete.singleAthlete,
-            profile: state.studentAthlete.singleProfile}
+  return { singleAthlete: state.studentAthlete.singleAthlete}
 }
 
-export default connect(mapStateToProps, { getSingleAthlete: getSingleAthlete,
-                                          getProfile: getProfile })(SingleAthlete);
+export default connect(mapStateToProps, { getSingleAthlete: getSingleAthlete })(SingleAthlete);

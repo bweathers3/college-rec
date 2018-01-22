@@ -310,7 +310,8 @@ export function receivedCreateAthletic(profile){
 }
 
 export function getProfile(id){
-  let url = API_URL + '/profiles/' + id
+  let student_athlete_id = id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/profiles/' + id;
   return (dispatch) => {
     type: GET_PROFILE,
     dispatch(startGetProfile())

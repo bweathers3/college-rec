@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router';
 import { Form, Col, Grid, Row, Button } from "react-bootstrap";
-import { isLoggedIn, createAcademic } from '../../actions/action';
+import { createAcademic } from '../../actions/action';
 import './addAcademic.css';
 
 
