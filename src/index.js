@@ -25,9 +25,9 @@ const router = (
         <Route path="/studentAthletes" component={ studentAthletes } />
         <Route path="/addAthlete/new" component={ addAthlete } />
         <Route path="/singleAthlete/:id" component={ singleAthlete } />
-        <Route path="/addProfile" component={ addProfile } />
-        <Route path="/addAcademic" component={ addAcademic } />
-        <Route path="/addAthletic" component={ addAthletic } />
+        <Route path="/addProfile/new" component={ addProfile } />
+        <Route path="/addAcademic/new" component={ addAcademic } />
+        <Route path="/addAthletic/new" component={ addAthletic } />
       </Route>
     </Router>
   </Provider>
