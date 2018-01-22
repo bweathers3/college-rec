@@ -19,7 +19,8 @@ class SingleAthlete extends Component{
     if(!this.props.singleAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
-
+    console.log('singleAthlete');
+    console.log(this.props.singleAthlete);
     return(
       <div className="container">
       <Grid>

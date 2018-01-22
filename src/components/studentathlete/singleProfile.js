@@ -12,13 +12,19 @@ class SingleProfile extends Component{
 
   componentWillMount(){
     const { athleteId } = this.props.studentAthlete;
-    this.props.getProfile( athleteId);
+    this.props.getProfile( athleteId );
   }
 
   render(){
-    if(!this.props.singleAthlete){
+    if(!this.props.studentAthlete){
       return <div> Getting Athlete Information, please wait. </div>;
     }
+    const { singleProfile } = this.props.studentAthlete;
+    //let profile = singleProfile[0];
+    console.log('singleProfile');
+    console.log(singleProfile);
+    //console.log('Profile');
+    //console.log(profile);
     return(
       <div className="container">
       <Grid>
@@ -26,10 +32,28 @@ class SingleProfile extends Component{
           <hr/>
         </Row>
         <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Name: { this.props.singleProfile.city + " " + this.props.singleProfile.state + "   " + this.props.singleProfile.zip } </h2></Col>
+          <Col xs={ 6 } md={ 8 }><h2>Address: </h2></Col>
+        </Row>
+        <Row>
+          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.street } </h2></Col>
+        </Row>
+        <Row>
+          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.city + ",  " + this.props.singleProfile.state + "   " + "   " + this.props.singleProfile.zip } </h2></Col>
+        </Row>
+        <Row>
+          <Col xs={ 6 } md={ 8 }><h2> {  this.props.singleProfile.country } </h2></Col>
         </Row>
         <Row className="show-grid">
           <br/>
+        </Row>
+        <Row>
+          <Col xs={ 6 } md={ 8 }><h2>Email: {  this.props.singleProfile.email } </h2></Col>
+        </Row>
+        <Row className="show-grid">
+          <br/>
+        </Row>
+        <Row>
+          <Col xs={ 6 } md={ 8 }><h2>Phone: {  this.props.singleProfile.phone } </h2></Col>
         </Row>
       </Grid>
       </div>

@@ -311,13 +311,14 @@ export function receivedCreateAthletic(profile){
 
 export function getProfile(id){
   let student_athlete_id = id;
-  let url = API_URL + '/student_athletes/' + student_athlete_id + '/profiles/' + id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/profiles/';
   return (dispatch) => {
     type: GET_PROFILE,
     dispatch(startGetProfile())
       return axios.get( url ).then(
         (response) => {
           let singleProfile = response.data;
+          console.log(singleProfile);
             dispatch(receivedGetProfile(singleProfile))
         },
         (err) => {
@@ -334,6 +335,7 @@ export function startGetProfile(){
 }
 
 export function receivedGetProfile(singleProfile){
+  console.log('RECEIVED_GET_PROFILE');
   return{
     type: RECEIVED_GET_PROFILE,
     singleProfile: singleProfile
