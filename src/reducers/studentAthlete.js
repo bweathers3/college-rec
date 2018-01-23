@@ -64,7 +64,7 @@ function studentAthlete(state = intitalStateApi, action) {
     case 'RECEIVED_GET_PROFILE' :
       return {
         ...state,
-        singleProfile: action.singleProfile[0],
+        singleProfile: action.singleProfile,
         gettingProfile: false,
       }
 
