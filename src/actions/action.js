@@ -123,9 +123,17 @@ export const CREATE_ACADEMIC = "CREATE_ACADEMIC";
 export const START_CREATE_ACADEMIC = "START_CREATE_ACADEMIC";
 export const RECEIVED_CREATE_ACADEMIC = "RECEIVED_CREATE_ACADEMIC";
 
+export const GET_ACADEMIC = "GET_ACADEMIC";
+export const START_GET_ACADEMIC = "START_GET_ACADEMIC";
+export const RECEIVED_GET_ACADEMIC = "RECEIVED_GET_ACADEMIC";
+
 export const CREATE_ATHLETIC = "CREATE_ATHLETIC";
 export const START_CREATE_ATHLETIC = "START_CREATE_ATHLETIC";
 export const RECEIVED_CREATE_ATHLETIC = "RECEIVED_CREATE_ATHLETIC";
+
+export const GET_ATHLETIC = "GET_ATHLETIC";
+export const START_GET_ATHLETIC = "START_GET_ATHLETIC";
+export const RECEIVED_GET_ATHLETIC = "RECEIVED_GET_ATHLETIC";
 
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 
@@ -255,7 +263,8 @@ export function receivedCreateProfile(profile){
 }
 
 export function createAcademic(id, props){
-  let url = API_URL + '/academics/'
+  let student_athlete_id = id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/academics/'
   return (dispatch) => {
     type: CREATE_ACADEMIC,
     dispatch(startCreateAcademic())
@@ -284,7 +293,8 @@ export function receivedCreateAcademic(profile){
 }
 
 export function createAthletic(id, props){
-  let url = API_URL + '/athletics/'
+  let student_athlete_id = id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/athletics/'
   return (dispatch) => {
     type: CREATE_ATHLETIC,
     dispatch(startCreateAthletic())
@@ -344,5 +354,90 @@ export function receivedGetProfile(singleProfile){
   return{
     type: RECEIVED_GET_PROFILE,
     singleProfile: singleProfile
+  }
+}
+
+export function getAcademic(id){
+  let student_athlete_id = id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/academics/';
+  console.log('url');
+  console.log(url);
+  return (dispatch) => {
+    type: GET_ACADEMIC,
+    dispatch(startGetAcademic())
+      return axios.get( url ).then(
+        (response) => {
+          let singleAcademic = response.data;
+          console.log('response.data');
+          console.log(response.data);
+          console.log('singleAcademic');
+          console.log(singleAcademic);
+          console.log('student_athlete_id');
+          console.log(student_athlete_id);
+          let item = singleAcademic.find(item => item.student_athlete_id === student_athlete_id);
+          singleAcademic = item;
+          console.log(singleAcademic);
+            dispatch(receivedGetAcademic(singleAcademic))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startGetAcademic(){
+  return {
+    type : START_GET_ACADEMIC
+  }
+}
+
+export function receivedGetAcademic(singleAcademic){
+  console.log('RECEIVED_GET_ACADEMIC');
+  console.log(singleAcademic);
+  return{
+    type: RECEIVED_GET_ACADEMIC,
+    singleAcademic: singleAcademic
+  }
+}
+
+
+
+
+export function getAthletic(id){
+  let student_athlete_id = id;
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/athletics/';
+  console.log('url');
+  console.log(url);
+  return (dispatch) => {
+    type: GET_ATHLETIC,
+    dispatch(startGetAthletic())
+      return axios.get( url ).then(
+        (response) => {
+          let singleAthletic = response.data;
+          let item = singleAthletic.find(item => item.student_athlete_id === student_athlete_id);
+          singleAthletic = item;
+          console.log(singleAthletic);
+            dispatch(receivedGetAthletic(singleAthletic))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startGetAthletic(){
+  return {
+    type : START_GET_ATHLETIC
+  }
+}
+
+export function receivedGetAthletic(singleAthletic){
+  console.log('RECEIVED_GET_ATHLETIC');
+  console.log(singleAthletic);
+  return{
+    type: RECEIVED_GET_ATHLETIC,
+    singleAthletic: singleAthletic
   }
 }

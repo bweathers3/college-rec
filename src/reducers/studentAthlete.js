@@ -4,9 +4,13 @@ const intitalStateApi = {
   all: [],
   singleAthlete: [],
   singleProfile: [],
+  singleAthletic: [],
+  singleAcademic: [],
   gettingStudentAthletes: false,
   gettingSingleAthlete: false,
   gettingProfile: false,
+  gettingAthetic: false,
+  gettingAcademic: false,
   athleteId: ""
 };
 
@@ -66,6 +70,44 @@ function studentAthlete(state = intitalStateApi, action) {
         ...state,
         singleProfile: action.singleProfile,
         gettingProfile: false,
+      }
+
+    case 'GET_ATHLETIC' :
+      return {
+        ...state
+    }
+
+    case 'START_GET_ATHLETIC' :
+      return {
+        ...state,
+        gettingAthetic: true
+    }
+
+    case 'RECEIVED_GET_ATHLETIC' :
+      return {
+        ...state,
+        singleAthletic: action.singleAthletic,
+        gettingAthetic: false,
+      }
+
+    case 'GET_ACADEMIC' :
+      return {
+        ...state
+    }
+
+    case 'START_GET_ACADEMIC' :
+      return {
+        ...state,
+        gettingAcademic: true
+    }
+
+    case 'RECEIVED_GET_ACADEMIC' :
+    console.log('action.singleAcademic');
+    console.log(action.singleAcademic);
+      return {
+        ...state,
+        singleAcademic: action.singleAcademic,
+        gettingAcademic: false,
       }
 
     default:

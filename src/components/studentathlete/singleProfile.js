@@ -63,7 +63,7 @@ class SingleProfile extends Component{
 }
 
 function mapStateToProps(state){
-  return { singleProfile: state.studentAthlete.singleProfile}
+  return { singleProfile: state.studentAthlete.singleProfile }
 }
 
 export default connect(mapStateToProps, { getProfile: getProfile })(SingleProfile);
