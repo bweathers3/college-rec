@@ -51,20 +51,30 @@ class SingleAthlete extends Component{
         <Row className="show-grid">
           <br/>
         </Row>
-      </Grid>
 
-        <Link to='/addProfile/new'>
-          <button className="btn btn-success log">Add New Athlete Profile</button>
-        </Link>
-        <Link to='/addAcademic/new'>
-          <button className="btn btn-success log">Add Academic Information</button>
-        </Link>
-        <Link to='/addAthletic/new'>
-          <button className="btn btn-success log">Add Athletic Information</button>
-        </Link>
-        <Link to='/singleProfile'>
-          <button className="btn btn-primary log">Get Athlete Profile</button>
-        </Link>
+          <Row>
+            <Link to='/addProfile/new'>
+              <button className="btn btn-success log">Add New Athlete Profile</button>
+            </Link>
+            <Link to='/addAcademic/new'>
+              <button className="btn btn-success log">Add Academic Information</button>
+            </Link>
+            <Link to='/addAthletic/new'>
+              <button className="btn btn-success log">Add Athletic Information</button>
+            </Link>
+          </Row>
+          <Row>
+            <Link to='/singleProfile'>
+              <button className="btn btn-primary log">Get Athlete Profile</button>
+            </Link>
+            <Link to='/singleAcademic'>
+              <button className="btn btn-primary log">Get Academic Information</button>
+            </Link>
+            <Link to='/singleAthletic'>
+              <button className="btn btn-primary log">Get Athletic Information</button>
+            </Link>
+          </Row>
+        </Grid>
       </div>
 
     );
