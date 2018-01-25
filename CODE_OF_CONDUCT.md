@@ -1,4 +1,4 @@
-# Get Recruited: Code of Conduct
+# GetRecruited: Code of Conduct
 
 ## Our Pledge
 

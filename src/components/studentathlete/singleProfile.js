@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getProfile } from '../../actions/action';
-import './style.css';
+import '../styles/componentsStyles.css';
 
 class SingleProfile extends Component{
   static contextTypes = {
@@ -27,37 +27,46 @@ class SingleProfile extends Component{
     //console.log(profile);
     return(
       <div className="container">
-      <Grid>
-        <Row className="show-grid">
-          <hr/>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Address: </h2></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.street } </h4></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.city + ",  " + this.props.singleProfile.state + "   " + "   " + this.props.singleProfile.zip } </h4></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4> {  this.props.singleProfile.country } </h4></Col>
-        </Row>
-        <Row className="show-grid">
-          <br/>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4>Email: {  this.props.singleProfile.email } </h4></Col>
-        </Row>
-        <Row className="show-grid">
-          <br/>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4>Phone: {  this.props.singleProfile.phone } </h4></Col>
-        </Row>
-      </Grid>
+        <Grid>
+          <Row className="show-grid">
+            <hr/>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small">Address: </Col>
+            <Col xs={ 4 } md={ 4 } className="Data-item-small"> {  this.props.singleProfile.street } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small"></Col>
+            <Col xs={ 4 } md={ 4 } className="Data-item-small"> {  this.props.singleProfile.city + ",  " + this.props.singleProfile.state  + "       " + this.props.singleProfile.zip } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small"></Col>
+            <Col xs={ 4 } md={ 4 } className="Data-item-small">{  this.props.singleProfile.country } </Col>
+          </Row>
+          <Row className="show-grid">
+            <br/>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small">Email: </Col>
+            <Col xs={ 2 } md={ 2 } className="Data-item-small">{  this.props.singleProfile.email } </Col>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small">Phone: </Col>
+            <Col xs={ 2 } md={ 2 } className="Data-item-small">{ this.props.singleProfile.phone } </Col>
+          </Row>
+          <Row className="show-grid">
+            <br/>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 1 } className="Data-title-small">Siblings: </Col>
+            <Col xs={ 4 } md={ 4 } className="Data-item-small">{ this.props.singleProfile.siblings } </Col>
+          </Row>
+        </Grid>
       </div>
-
     );
   }
 }

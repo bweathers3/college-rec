@@ -2,7 +2,6 @@ import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
 import axios from 'axios';
 
-
 export function homeBaseState() {
   return {
     type: 'HOME_BASE_STATE'
@@ -13,8 +12,8 @@ const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 const CLIENT_ID = 'WvJ6rYTxRexqciAB_bJr6d2PHFMmLmNx';
 const CLIENT_DOMAIN = 'get-recruited.auth0.com';
-//const REDIRECT = 'http://localhost:3000/callback'; // development
-const REDIRECT = 'https://intense-mesa-15069.herokuapp.com/callback'; // development
+const REDIRECT = 'http://localhost:3000/callback'; // Local development
+//const REDIRECT = 'https://intense-mesa-15069.herokuapp.com/callback'; // Heroku development
 const SCOPE = 'openid';
 const AUDIENCE = 'https://get-recruited.auth0.com/userinfo';
 
@@ -65,7 +64,6 @@ function getTokenExpirationDate(encodedToken) {
 
   const date = new Date(0);
   date.setUTCSeconds(token.exp);
-
   return date;
 }
 
@@ -136,10 +134,8 @@ export const START_GET_ATHLETIC = "START_GET_ATHLETIC";
 export const RECEIVED_GET_ATHLETIC = "RECEIVED_GET_ATHLETIC";
 
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
-
-
-//const API_URL = "http://localhost:5000/api/v1" ; // development
-const API_URL = "https://intense-plateau-74097.herokuapp.com/api/v1" ; // heroku production
+const API_URL = "http://localhost:5000/api/v1" ; // Local development
+//const API_URL = "https://intense-plateau-74097.herokuapp.com/api/v1" ; // heroku development
 
 export function getStudentAthletes(){
   let url = API_URL + '/student_athletes'
@@ -237,8 +233,6 @@ export function createProfile(id, props){
     type: CREATE_PROFILE,
     dispatch(startCreateProfile())
         let final_obj = {student_athlete_id: id, profile: props};
-        console.log('[action creator createProfile] (about to post) final_obj:');
-        console.log(final_obj);
         return axios.post( url, final_obj ).then(
         (response) => {
             dispatch(receivedCreateProfile())
@@ -324,17 +318,14 @@ export function receivedCreateAthletic(profile){
 
 export function getProfile(id){
   let student_athlete_id = id;
-  let url = API_URL + '/student_athletes/' + student_athlete_id + '/profiles/';
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/profiles/' + id;
   return (dispatch) => {
     type: GET_PROFILE,
     dispatch(startGetProfile())
-      return axios.get( url ).then(
+        return axios.get( url ).then(
         (response) => {
           let singleProfile = response.data;
-          let item = singleProfile.find(item => item.student_athlete_id === student_athlete_id);
-          singleProfile = item;
-          console.log(singleProfile);
-            dispatch(receivedGetProfile(singleProfile))
+          dispatch(receivedGetProfile(singleProfile))
         },
         (err) => {
           console.log(err);
@@ -350,7 +341,6 @@ export function startGetProfile(){
 }
 
 export function receivedGetProfile(singleProfile){
-  console.log('RECEIVED_GET_PROFILE');
   return{
     type: RECEIVED_GET_PROFILE,
     singleProfile: singleProfile
@@ -359,25 +349,14 @@ export function receivedGetProfile(singleProfile){
 
 export function getAcademic(id){
   let student_athlete_id = id;
-  let url = API_URL + '/student_athletes/' + student_athlete_id + '/academics/';
-  console.log('url');
-  console.log(url);
+  let url = API_URL + '/student_athletes/' + student_athlete_id + '/academics/' + id;
   return (dispatch) => {
     type: GET_ACADEMIC,
     dispatch(startGetAcademic())
       return axios.get( url ).then(
         (response) => {
           let singleAcademic = response.data;
-          console.log('response.data');
-          console.log(response.data);
-          console.log('singleAcademic');
-          console.log(singleAcademic);
-          console.log('student_athlete_id');
-          console.log(student_athlete_id);
-          let item = singleAcademic.find(item => item.student_athlete_id === student_athlete_id);
-          singleAcademic = item;
-          console.log(singleAcademic);
-            dispatch(receivedGetAcademic(singleAcademic))
+          dispatch(receivedGetAcademic(singleAcademic))
         },
         (err) => {
           console.log(err);
@@ -393,32 +372,22 @@ export function startGetAcademic(){
 }
 
 export function receivedGetAcademic(singleAcademic){
-  console.log('RECEIVED_GET_ACADEMIC');
-  console.log(singleAcademic);
   return{
     type: RECEIVED_GET_ACADEMIC,
     singleAcademic: singleAcademic
   }
 }
 
-
-
-
 export function getAthletic(id){
   let student_athlete_id = id;
   let url = API_URL + '/student_athletes/' + student_athlete_id + '/athletics/';
-  console.log('url');
-  console.log(url);
   return (dispatch) => {
     type: GET_ATHLETIC,
     dispatch(startGetAthletic())
       return axios.get( url ).then(
         (response) => {
           let singleAthletic = response.data;
-          let item = singleAthletic.find(item => item.student_athlete_id === student_athlete_id);
-          singleAthletic = item;
-          console.log(singleAthletic);
-            dispatch(receivedGetAthletic(singleAthletic))
+          dispatch(receivedGetAthletic(singleAthletic))
         },
         (err) => {
           console.log(err);
@@ -434,8 +403,6 @@ export function startGetAthletic(){
 }
 
 export function receivedGetAthletic(singleAthletic){
-  console.log('RECEIVED_GET_ATHLETIC');
-  console.log(singleAthletic);
   return{
     type: RECEIVED_GET_ATHLETIC,
     singleAthletic: singleAthletic

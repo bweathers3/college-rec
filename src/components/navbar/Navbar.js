@@ -22,7 +22,7 @@ class Navbar extends Component {
   render() {
     return (
       <Row>
-        <Col xs={ 12 } md={ 9 } className="nav-bar">
+        <Col xs={ 3 } md={ 9 } className="nav-bar">
           <h5 id="nav-title">
             <Link className="link" to="/">Get Recruited</Link>
           </h5>

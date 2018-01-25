@@ -7,10 +7,10 @@
 }
 
 .Home-header {
-  background-color:  whitesmoke; /*white; /*#42c5f4; mediumspringgreen;/*chartreuse; /*#222;*/
+  background-color:  whitesmoke;
   height: 120px;
   padding: 20px;
-  color:  blue; /*#42c5f4;*/
+  color:  blue;
 }
 
 .Home-title {
@@ -19,14 +19,14 @@
 }
 
 .Home-intro {
-  font-size: 1.0em;
+  font-size: 1.5em;
   padding: 20px;
   color: blue;
   font-family: 'Merriweather', serif;
 }
 
 body {
-  background-color: #42c5f4; /*white;*/
+  background-color: #42c5f4;
   color: white;
   font-size: medium;
   font-family: 'Merriweather', serif;
@@ -57,7 +57,7 @@ button:hover {
   padding: 50px;
 }
 
-.container-add-athlete {
+.container-sales-point {
   padding: 50px;
 }
 

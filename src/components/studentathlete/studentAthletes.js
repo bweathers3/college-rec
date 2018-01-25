@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getStudentAthletes } from '../../actions/action';
+import '../styles/componentsStyles.css';
 
 class StudentAthletes extends React.Component {
   componentWillMount(){
@@ -25,17 +26,15 @@ class StudentAthletes extends React.Component {
     return (
       <div>
         <Grid>
-        <Row className="show-grid">
-          <hr/>
-        </Row>
+          <Row className="show-grid">
+            <hr/>
+          </Row>
           <Row>
-            <Col md={ 4 }>
-              Your Athlete(s)
-            </Col>
+            <Col md={ 4 } className="Page-title">Your Athlete(s)</Col>
           </Row>
           <Row>
             <Col md={ 4 }>
-              <ol className="list-group">
+              <ol>
                 { this.renderStudentAthletes() }
               </ol>
             </Col>

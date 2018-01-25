@@ -1,12 +1,21 @@
 
 # Welcome!
 
-# Get Recruited Frontend - college-rec
+# GetRecruited Frontend - college-rec
 
 
-## Get Recruited Technologies
+## GetRecruited Technologies
 
-The Get Recruited site is comprised of a Rails API backend, and a React/Redux frontend.
+The GetRecruited site is comprised of a Rails API backend, and a React/Redux frontend.
+
+This ReadMe focuses on the frontend application.
+
+
+#### What is a frontend?
+
+When you visit our website you're interacting with two systems, a frontend application and a backend application. The frontend application is responsible for inputing  data from the user interface, displaying images, text and data on our web pages.
+
+Points regarding the frontend technologies:
 
 * React / Redux
 * In local development the sever should be on localhost:3000
@@ -16,17 +25,6 @@ The Get Recruited site is comprised of a Rails API backend, and a React/Redux fr
   "axios": "^0.17.1",
   "react-bootstrap": "^0.31.5",
   "redux-form": "^7.2.0",
-
-#### What is a frontend?
-
-When you visit our website you're interacting with two systems, a frontend application and a backend application. The frontend application is responsible for input data from the user interface, displaying images, text and data on our web pages.
-
-
-#### What is a backend?
-
-The backend (where you are now) is responsible for:
-
-- exchanging data with the frontend via custom API endpoints
 
 
 #### Local Development Environment
@@ -39,9 +37,9 @@ git clone https://github.com/[YOUR-GITHUB-NAME]/college-rec.git
 cd college-rec
 
 
-#### Running Get Recruited Frontend:
+#### Running GetRecruited Frontend:
 
-To run the backend use the localhost:3000
+To run the frontend use the localhost:3000
 
 You can now visit http://localhost:3000
 
@@ -50,7 +48,7 @@ to start the application locally:   npm start
 
 ## Finding An Issue
 
-* If you have everything setup you can find issues to work on. **Get Recruited** uses Github's built in issue tracker. A listing of all our issues can be found [here]https://github.com/bweathers3/college-rec/issues.
+* If you have everything setup you can find issues to work on. **Get Recruited** uses Github's built-in issue tracker. A listing of all our issues can be found [here]https://github.com/bweathers3/college-rec/issues.
 
 * Once you have found an issue, leave a comment stating that you plan to work on the issue. Once assigned to you, your mission is a go!
 
