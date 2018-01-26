@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { Form, Col, Grid, Row, Button } from "react-bootstrap";
 import { createAcademic } from '../../actions/action';
-import './addAcademic.css';
+import '../styles/componentsStyles.css';
 
 
 const validate = values => {

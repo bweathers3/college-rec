@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getSingleAthlete } from '../../actions/action';
-import './style.css';
+import '../styles/componentsStyles.css';
 
 class SingleAthlete extends Component{
   static contextTypes = {
@@ -20,63 +20,57 @@ class SingleAthlete extends Component{
       return <div> Getting Athlete Information, please wait. </div>;
     }
 
-    console.log(<Link to='/addProfile/new'>
-      <button className="btn btn-success log">Add New Athlete Profile</button>
-    </Link>);
-    console.log(<Link to='/addAcademic/new'>
-      <button className="btn btn-success log">Add Academic Information</button>
-    </Link>);
-    console.log(<Link to='/addAthletic/new'>
-      <button className="btn btn-success log">Add Athletic Information</button>
-    </Link>);
-
     return(
       <div className="container">
-      <Grid>
-        <Row className="show-grid">
-          <hr/>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Name: { this.props.singleAthlete.firstName + " " + this.props.singleAthlete.middleName + " " + this.props.singleAthlete.lastName } </h2></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h3>Birthday: { this.props.singleAthlete.birthdate } </h3></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h3>Year Entering Univ. : { this.props.singleAthlete.intended_enrollment_year } </h3></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h3>Teams of Interest: { this.props.singleAthlete.gender } </h3></Col>
-        </Row>
-        <Row className="show-grid">
-          <br/>
-        </Row>
-
-          <Row>
-            <Link to='/addProfile/new'>
-              <button className="btn btn-success log">Add New Athlete Profile</button>
-            </Link>
-            <Link to='/addAcademic/new'>
-              <button className="btn btn-success log">Add Academic Information</button>
-            </Link>
-            <Link to='/addAthletic/new'>
-              <button className="btn btn-success log">Add Athletic Information</button>
-            </Link>
+        <Grid>
+          <Row className="show-grid">
+            <hr/>
           </Row>
           <Row>
-            <Link to='/singleProfile'>
+            <Col xs={ 6 } md={ 3 } className="Data-title">Name:</Col>
+            <Col xs={ 6 } md={ 4 } className="Data-item"> { this.props.singleAthlete.firstName + " " + this.props.singleAthlete.middleName + " " + this.props.singleAthlete.lastName } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 } className="Data-title">Birthday: </Col>
+            <Col xs={ 6 } md={ 4 } className="Data-item"> { this.props.singleAthlete.birthdate } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 } className="Data-title">Year Entering Univ.: </Col>
+            <Col xs={ 6 } md={ 4 } className="Data-item"> { this.props.singleAthlete.intended_enrollment_year } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 } className="Data-title">Teams of Interest: </Col>
+            <Col xs={ 6 } md={ 4 } className="Data-item"> { this.props.singleAthlete.gender } </Col>
+          </Row>
+          <Row className="show-grid">
+            <br/>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 }><Link to='/addProfile/new'>
+              <button className="btn btn-success log">Add New Athlete Profile</button>
+            </Link></Col>
+            <Col xs={ 6 } md={ 3 }><Link to='/singleProfile'>
               <button className="btn btn-primary log">Get Athlete Profile</button>
-            </Link>
-            <Link to='/singleAcademic'>
+            </Link></Col>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 }><Link to='/addAcademic/new'>
+              <button className="btn btn-success log">Add Academic Information</button>
+            </Link></Col>
+            <Col xs={ 6 } md={ 3 }><Link to='/singleAcademic'>
               <button className="btn btn-primary log">Get Academic Information</button>
-            </Link>
-            <Link to='/singleAthletic'>
+            </Link></Col>
+          </Row>
+          <Row>
+            <Col xs={ 6 } md={ 3 }><Link to='/addAthletic/new'>
+              <button className="btn btn-success log">Add Athletic Information</button>
+            </Link></Col>
+            <Col xs={ 6 } md={ 3 }><Link to='/singleAthletic'>
               <button className="btn btn-primary log">Get Athletic Information</button>
-            </Link>
+            </Link></Col>
           </Row>
         </Grid>
       </div>
-
     );
   }
 }

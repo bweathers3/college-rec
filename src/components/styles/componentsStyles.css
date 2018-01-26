@@ -7,10 +7,10 @@
 }
 
 .Home-header {
-  background-color:  whitesmoke; /*white; /*#42c5f4; mediumspringgreen;/*chartreuse; /*#222;*/
+  background-color:  whitesmoke;
   height: 120px;
   padding: 20px;
-  color:  blue; /*#42c5f4;*/
+  color:  blue;
 }
 
 .Home-title {
@@ -25,8 +25,54 @@
   font-family: 'Merriweather', serif;
 }
 
+.Page-title {
+  font-size: 1.70em;
+  padding: 20px;
+  color: blue;
+  font-family: 'Merriweather', serif;
+}
+
+.Data-title {
+  font-size: 1.50em;
+  padding: 20px;
+  color: blue;
+  font-family: 'Merriweather', serif;
+}
+
+.Data-title-small {
+  font-size: 1.00em;
+  padding: 20px;
+  color: blue;
+  font-family: 'Merriweather', serif;
+}
+
+.Data-item {
+  font-size: 1.50em;
+  padding: 20px;
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+
+.Data-item-small {
+  font-size: 1.00em;
+  padding: 20px;
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+
+ol {
+  font-size: 1.8em;
+  padding: 20px;
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+
+li span {
+  color: blue;
+}
+
 body {
-  background-color: #42c5f4; /*white;*/
+  background-color: #42c5f4;
   color: white;
   font-size: medium;
   font-family: 'Merriweather', serif;

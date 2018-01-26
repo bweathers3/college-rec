@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { getAthletic } from '../../actions/action';
-import './style.css';
+import '../styles/componentsStyles.css';
 
 class SingleAthletic extends Component{
   static contextTypes = {
@@ -21,31 +21,53 @@ class SingleAthletic extends Component{
     }
     const { singleAthletic } = this.props.studentAthlete;
 
-    console.log('singleAthletic');
-    console.log(singleAthletic);
-
     return(
       <div className="container">
-      <Grid>
-        <Row className="show-grid">
-          <hr/>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h2>Athletic Information: </h2></Col>
-        </Row>
-        <Row>
-          <Col xs={ 6 } md={ 8 }><h4>50 Free SCY: {  this.props.singleAthletic.stat1 } </h4></Col>
-          <Col xs={ 6 } md={ 8 }><h4>50 Free SCM: {  this.props.singleAthletic.stat2 } </h4></Col>
-          <Col xs={ 6 } md={ 8 }><h4>50 Free LCM: {  this.props.singleAthletic.stat3 } </h4></Col>
-        </Row>
-
-        <Row className="show-grid">
-          <br/>
-        </Row>
-
-      </Grid>
+        <Grid>
+          <Row className="show-grid">
+            <hr/>
+          </Row>
+          <Row>
+            <Col xs={ 4 } md={ 12 } className="Home-intro">Athletic Information:</Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 50 Free SCY: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat1 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 50 Free SCM: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat2 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 50 Free LCM: </Col>
+            <Col xs={ 4 } md={ 1 } className="Data-item-small"> { this.props.singleAthletic.stat3 } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 100 Free SCY: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat4 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 100 Free SCM: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat5 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 100 Free LCM: </Col>
+            <Col xs={ 4 } md={ 1 } className="Data-item-small"> { this.props.singleAthletic.stat6 } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 200 Free SCY: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat7 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 200 Free SCM: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat8 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 200 Free LCM: </Col>
+            <Col xs={ 4 } md={ 1 } className="Data-item-small"> { this.props.singleAthletic.stat9 } </Col>
+          </Row>
+          <Row>
+            <Col xs={ 1 } md={ 1 } ></Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 400 Free SCY: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat10 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 400 Free SCM: </Col>
+            <Col xs={ 4 } md={ 2 } className="Data-item-small"> { this.props.singleAthletic.stat11 } </Col>
+            <Col xs={ 1 } md={ 2 } className="Data-title-small"> 400 Free LCM: </Col>
+            <Col xs={ 4 } md={ 1 } className="Data-item-small"> { this.props.singleAthletic.stat12 } </Col>
+          </Row>
+        </Grid>
       </div>
-
     );
   }
 }

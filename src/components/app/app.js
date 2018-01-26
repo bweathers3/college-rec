@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as action from '../../actions/action';
 import main from '../../pages/main';
-import './app.css';
+import '../styles/componentsStyles.css';
 
 function mapStateToProps(state) {
   return {

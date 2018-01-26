@@ -19,7 +19,7 @@ class Home extends Component {
   }
 
   render() {
-    
+
     return (
 
       <div className="Home">
@@ -47,23 +47,22 @@ class Home extends Component {
 
         <Row className="container-sales-point">
           <Col xs={6} md={4}>
-            <p><strong>{ salesPoint1.title }</strong></p>
+            <p><strong className="Home-intro">{ salesPoint1.title }</strong></p>
             <p>{ salesPoint1.description }</p>
           </Col>
           <Col xs={6} md={4}>
-            <p><strong>{ salesPoint2.title }</strong></p>
+            <p><strong className="Home-intro">{ salesPoint2.title }</strong></p>
             <p>{ salesPoint2.description }</p>
           </Col>
           <Col xs={6} md={4}>
-            <p><strong>{ salesPoint3.title }</strong></p>
+            <p><strong className="Home-intro">{ salesPoint3.title }</strong></p>
             <p>{ salesPoint3.description }</p>
           </Col>
         </Row>
 
         <Row className="Footer">
-          <Col xs={6} md={2}>GetRecruited.com </Col>
           <Col xsHidden md={8}></Col>
-          <Col xs={6} md={2}>CopyRight 2018</Col>
+          <Col xs={6} md={4}>&copy; 2018 GetRecruited.com, LLC</Col>
         </Row>
       </div>
 
