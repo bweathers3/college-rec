@@ -97,6 +97,10 @@ export function setIdToken() {
   localStorage.setItem(ID_TOKEN_KEY, idToken);
 }
 
+export const GET_USER = "GET_USER";
+export const START_GET_USER = "START_GET_USER";
+export const RECEIVED_GET_USER = "RECEIVED_GET_USER";
+
 export const GET_STUDENT_ATHLETES = "GET_STUDENT_ATHLETES";
 export const START_STUDENT_ATHLETES_SEARCH = "START_STUDENT_ATHLETES_SEARCH";
 export const RECEIVED_STUDENT_ATHLETES = "RECEIVED_STUDENT_ATHLETES";
@@ -136,6 +140,39 @@ export const RECEIVED_GET_ATHLETIC = "RECEIVED_GET_ATHLETIC";
 export const DELETE_STUDENT_ATHLETE = "DELETE_STUDENT_ATHLETE";
 const API_URL = "http://localhost:5000/api/v1" ; // Local development
 //const API_URL = "https://intense-plateau-74097.herokuapp.com/api/v1" ; // heroku development
+
+export function getUser(){
+  let userToken = getIdToken();
+  let url = API_URL + '/user/';
+  return (dispatch) => {
+    type: GET_USER,
+    dispatch(startGetUser())
+    let final_obj = {userToken: userToken};
+      return axios.get( url, final_obj ).then(
+        (response) => {
+          let singleUser = response.data;
+          dispatch(receivedGetUser(singleUser))
+        },
+        (err) => {
+          console.log(err);
+        }
+    )
+  }
+}
+
+export function startGetUser(){
+  return {
+    type : START_GET_USER
+  }
+}
+
+export function receivedGetUser(singleUser){
+  console.log(singleUser);
+  return{
+    type: RECEIVED_GET_USER,
+    singleUser: singleUser
+  }
+}
 
 export function getStudentAthletes(){
   let url = API_URL + '/student_athletes'

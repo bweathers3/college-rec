@@ -11,7 +11,8 @@ class Home extends Component {
   }
 
   handleLoginClick() {
-    this.props.login()
+    this.props.login(),
+    this.props.getUser()
   }
 
   handleLogoutClick() {
